@@ -3,14 +3,15 @@ using UnityEngine;
 using UnityEngine.Serialization;
 
 // Reference: https://assetstore.unity.com/packages/tools/integration/uni-bullet-hell-19088
-public class LinearShot : BulletShooterBase
+public class RandomShot : BulletShooterBase
 {
-  [Header("===== LinearShot Settings =====")]
+  [Header("===== RandomShot Settings =====")]
   // "Set a angle of shot. (0 to 360)"
-  [Range(0f, 360f)]
-  public float m_angle = 180f;
   // "Set a delay time between bullet and next bullet. (sec)"
   public float m_betweenDelay = 0.1f;
+  public float minimumAngleDistance = 10f;
+  public float minimumAngleSeparation = 25f;
+  float prevAngle = 0;
 
   public override void Shot()
   {
@@ -44,7 +45,15 @@ public class LinearShot : BulletShooterBase
         break;
       }
 
-      ShotBullet(bullet, m_bulletSpeed, m_angle);
+      float shootingAngle = Random.Range(0, 360);
+      if (Mathf.Abs(shootingAngle - prevAngle) <= this.minimumAngleDistance)
+      {
+        shootingAngle = Random.Range(0.0f, 1.0f) >= 0.5f ? shootingAngle + this.minimumAngleSeparation : shootingAngle - this.minimumAngleSeparation;
+        shootingAngle = Utils2D.GetNormalizedAngle(shootingAngle);
+      }
+
+      ShotBullet(bullet, m_bulletSpeed, shootingAngle);
+      this.prevAngle = shootingAngle;
     }
 
     FiredShot();

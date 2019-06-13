@@ -1,169 +1,169 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-/// <summary>
-/// Ubh util.
-/// </summary>
+// Utilities for 2D math-related stuff
+// TODO: May remove
+// Reference: https://assetstore.unity.com/packages/tools/integration/uni-bullet-hell-19088
 public static class Utils2D
 {
-    public static readonly Vector3 VECTOR3_ZERO = Vector3.zero;
-    public static readonly Vector3 VECTOR3_ONE = Vector3.one;
-    public static readonly Vector3 VECTOR3_HALF = new Vector3(0.5f, 0.5f, 0.5f);
+  public static readonly Vector3 VECTOR3_ZERO = Vector3.zero;
+  public static readonly Vector3 VECTOR3_ONE = Vector3.one;
+  public static readonly Vector3 VECTOR3_HALF = new Vector3(0.5f, 0.5f, 0.5f);
 
-    public static readonly Vector2 VECTOR2_ZERO = Vector2.zero;
-    public static readonly Vector2 VECTOR2_ONE = Vector2.one;
-    public static readonly Vector2 VECTOR2_HALF = new Vector2(0.5f, 0.5f);
+  public static readonly Vector2 VECTOR2_ZERO = Vector2.zero;
+  public static readonly Vector2 VECTOR2_ONE = Vector2.one;
+  public static readonly Vector2 VECTOR2_HALF = new Vector2(0.5f, 0.5f);
 
-    public static readonly Quaternion QUATERNION_IDENTITY = Quaternion.identity;
+  public static readonly Quaternion QUATERNION_IDENTITY = Quaternion.identity;
 
-    /// <summary>
-    /// Move axis types.
-    /// </summary>
-    public enum AXIS
-    {
-        X_AND_Y,
-        X_AND_Z,
-    }
+  /// <summary>
+  /// Move axis types.
+  /// </summary>
+  public enum AXIS
+  {
+    X_AND_Y,
+    X_AND_Z,
+  }
 
-    /// <summary>
-    /// Time types.
-    /// </summary>
-    public enum TIME
-    {
-        DELTA_TIME,
-        UNSCALED_DELTA_TIME,
-        FIXED_DELTA_TIME,
-    }
+  /// <summary>
+  /// Time types.
+  /// </summary>
+  public enum TIME
+  {
+    DELTA_TIME,
+    UNSCALED_DELTA_TIME,
+    FIXED_DELTA_TIME,
+  }
 
-    /// <summary>
-    /// Determines if is mobile platform.
-    /// </summary>
-    public static bool IsMobilePlatform()
-    {
+  /// <summary>
+  /// Determines if is mobile platform.
+  /// </summary>
+  public static bool IsMobilePlatform()
+  {
 #if UNITY_IOS || UNITY_ANDROID
-        return true;
+    return true;
 #else
         return false;
 #endif
-    }
+  }
 
-    /// <summary>
-    /// Wait for seconds coroutine for UniBulletHell.
-    /// </summary>
-    public static IEnumerator WaitForSeconds(float waitTime)
+  /// <summary>
+  /// Wait for seconds coroutine for UniBulletHell.
+  /// </summary>
+  public static IEnumerator WaitForSeconds(float waitTime)
+  {
+    float elapsedTime = 0f;
+    while (elapsedTime < waitTime)
     {
-        float elapsedTime = 0f;
-        while (elapsedTime < waitTime)
-        {
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
+      elapsedTime += Time.deltaTime;
+      yield return null;
     }
+  }
 
-    /// <summary>
-    /// Get Transform from tag name.
-    /// </summary>
-    public static Transform GetTransformFromTagName(string tagName, bool randomSelect)
+  /// <summary>
+  /// Get Transform from tag name.
+  /// </summary>
+  public static Transform GetTransformFromTagName(string tagName, bool randomSelect)
+  {
+    if (string.IsNullOrEmpty(tagName))
     {
-        if (string.IsNullOrEmpty(tagName))
-        {
-            return null;
-        }
-
-        GameObject goTarget = null;
-        if (randomSelect)
-        {
-            GameObject[] goTargets = GameObject.FindGameObjectsWithTag(tagName);
-            if (goTargets != null && goTargets.Length > 0)
-            {
-                goTarget = goTargets[Random.Range(0, goTargets.Length)];
-            }
-        }
-        else
-        {
-            goTarget = GameObject.FindWithTag(tagName);
-        }
-        if (goTarget == null)
-        {
-            return null;
-        }
-        return goTarget.transform;
+      return null;
     }
 
-    /// <summary>
-    /// Get shifted angle.
-    /// </summary>
-    public static float GetShiftedAngle(int wayIndex, float baseAngle, float betweenAngle)
+    GameObject goTarget = null;
+    if (randomSelect)
     {
-        float angle = wayIndex % 2 == 0 ?
-                      baseAngle - (betweenAngle * (float)wayIndex / 2f) :
-                      baseAngle + (betweenAngle * Mathf.Ceil((float)wayIndex / 2f));
-        return angle;
+      GameObject[] goTargets = GameObject.FindGameObjectsWithTag(tagName);
+      if (goTargets != null && goTargets.Length > 0)
+      {
+        goTarget = goTargets[Random.Range(0, goTargets.Length)];
+      }
     }
-
-    /// <summary>
-    /// Get 0 ~ 360 angle.
-    /// </summary>
-    public static float GetNormalizedAngle(float angle)
+    else
     {
-        while (angle < 0f)
-        {
-            angle += 360f;
-        }
-        while (360f < angle)
-        {
-            angle -= 360f;
-        }
-        return angle;
+      goTarget = GameObject.FindWithTag(tagName);
     }
-
-    /// <summary>
-    /// Get angle from two transforms position.
-    /// </summary>
-    public static float GetAngleFromTwoPosition(Transform fromTrans, Transform toTrans, AXIS axisMove)
+    if (goTarget == null)
     {
-        switch (axisMove)
-        {
-            case AXIS.X_AND_Y:
-                return GetZangleFromTwoPosition(fromTrans, toTrans);
-            case AXIS.X_AND_Z:
-                return GetYangleFromTwoPosition(fromTrans, toTrans);
-            default:
-                return 0f;
-        }
+      return null;
     }
+    return goTarget.transform;
+  }
 
-    /// <summary>
-    /// Get Z angle from two transforms position.
-    /// </summary>
-    private static float GetZangleFromTwoPosition(Transform fromTrans, Transform toTrans)
+  /// <summary>
+  /// Get shifted angle.
+  /// </summary>
+  public static float GetShiftedAngle(int wayIndex, float baseAngle, float betweenAngle)
+  {
+    float angle = wayIndex % 2 == 0 ?
+                  baseAngle - (betweenAngle * (float)wayIndex / 2f) :
+                  baseAngle + (betweenAngle * Mathf.Ceil((float)wayIndex / 2f));
+    return angle;
+  }
+
+  /// <summary>
+  /// Get 0 ~ 360 angle.
+  /// </summary>
+  public static float GetNormalizedAngle(float angle)
+  {
+    while (angle < 0f)
     {
-        if (fromTrans == null || toTrans == null)
-        {
-            return 0f;
-        }
-        float xDistance = toTrans.position.x - fromTrans.position.x;
-        float yDistance = toTrans.position.y - fromTrans.position.y;
-        float angle = (Mathf.Atan2(yDistance, xDistance) * Mathf.Rad2Deg) - 90f;
-        angle = GetNormalizedAngle(angle);
-
-        return angle;
+      angle += 360f;
     }
-
-    /// <summary>
-    /// Get Y angle from two transforms position.
-    /// </summary>
-    private static float GetYangleFromTwoPosition(Transform fromTrans, Transform toTrans)
+    while (360f < angle)
     {
-        if (fromTrans == null || toTrans == null)
-        {
-            return 0f;
-        }
-        float xDistance = toTrans.position.x - fromTrans.position.x;
-        float zDistance = toTrans.position.z - fromTrans.position.z;
-        float angle = (Mathf.Atan2(zDistance, xDistance) * Mathf.Rad2Deg) - 90f;
-        angle = GetNormalizedAngle(angle);
-
-        return angle;
+      angle -= 360f;
     }
+    return angle;
+  }
+
+  /// <summary>
+  /// Get angle from two transforms position.
+  /// </summary>
+  public static float GetAngleFromTwoPosition(Transform fromTrans, Transform toTrans, AXIS axisMove)
+  {
+    switch (axisMove)
+    {
+      case AXIS.X_AND_Y:
+        return GetZangleFromTwoPosition(fromTrans, toTrans);
+      case AXIS.X_AND_Z:
+        return GetYangleFromTwoPosition(fromTrans, toTrans);
+      default:
+        return 0f;
+    }
+  }
+
+  /// <summary>
+  /// Get Z angle from two transforms position.
+  /// </summary>
+  private static float GetZangleFromTwoPosition(Transform fromTrans, Transform toTrans)
+  {
+    if (fromTrans == null || toTrans == null)
+    {
+      return 0f;
+    }
+    float xDistance = toTrans.position.x - fromTrans.position.x;
+    float yDistance = toTrans.position.y - fromTrans.position.y;
+    float angle = (Mathf.Atan2(yDistance, xDistance) * Mathf.Rad2Deg) - 90f;
+    angle = GetNormalizedAngle(angle);
+
+    return angle;
+  }
+
+  /// <summary>
+  /// Get Y angle from two transforms position.
+  /// </summary>
+  private static float GetYangleFromTwoPosition(Transform fromTrans, Transform toTrans)
+  {
+    if (fromTrans == null || toTrans == null)
+    {
+      return 0f;
+    }
+    float xDistance = toTrans.position.x - fromTrans.position.x;
+    float zDistance = toTrans.position.z - fromTrans.position.z;
+    float angle = (Mathf.Atan2(zDistance, xDistance) * Mathf.Rad2Deg) - 90f;
+    angle = GetNormalizedAngle(angle);
+
+    return angle;
+  }
 }

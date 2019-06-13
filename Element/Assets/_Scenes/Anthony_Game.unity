@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f34889db4c0cbfb4692eedd972643312, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotIndex: 0
+  shotIndex: 2
   m_shotObjs: []
   m_afterDelay: 2
 --- !u!212 &279072066
@@ -202,6 +202,7 @@ Transform:
   m_Children:
   - {fileID: 1388006659}
   - {fileID: 1143109102}
+  - {fileID: 1797071976}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -696,7 +697,7 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7f3ecfe909bb384283fb24679e54db0, type: 2}
   m_IsPrefabAsset: 0
---- !u!114 &1072473458 stripped
+--- !u!114 &1072473460 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114290138613263966, guid: e7f3ecfe909bb384283fb24679e54db0,
     type: 2}
@@ -742,7 +743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8b4a7c00100234da3aceabe5426dbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_bulletPrefab: {fileID: 1072473458}
+  m_bulletPrefab: {fileID: 1072473460}
   m_bulletNum: 10
   m_bulletSpeed: 2
   m_accelerationSpeed: 0
@@ -1002,7 +1003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62b40e3a1559eac4f87ad7d11a47a3b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_bulletPrefab: {fileID: 1072473458}
+  m_bulletPrefab: {fileID: 1072473460}
   m_bulletNum: 10
   m_bulletSpeed: 2
   m_accelerationSpeed: 0
@@ -1285,6 +1286,74 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!1 &1797071975
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1797071976}
+  - component: {fileID: 1797071977}
+  m_Layer: 0
+  m_Name: RandomShot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1797071976
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1797071975}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.9999933, y: 0.9999933, z: 0.9999933}
+  m_Children: []
+  m_Father: {fileID: 279072067}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1797071977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1797071975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bec771ac2390ec4ba06cd0cd87ad363, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_bulletPrefab: {fileID: 1072473460}
+  m_bulletNum: 10
+  m_bulletSpeed: 2
+  m_accelerationSpeed: 0
+  m_useMaxSpeed: 0
+  m_maxSpeed: 0
+  m_useMinSpeed: 0
+  m_minSpeed: 0
+  m_accelerationTurn: 0
+  m_usePauseAndResume: 0
+  m_pauseTime: 0
+  m_resumeTime: 0
+  m_useAutoRelease: 1
+  m_autoReleaseTime: 2
+  m_inheritAngle: 1
+  m_shotFiredCallbackEvents:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_shotFinishedCallbackEvents:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_betweenDelay: 0.1
+  minimumAngleDistance: 10
+  minimumAngleSeparation: 25
 --- !u!1 &1822762943
 GameObject:
   m_ObjectHideFlags: 0
