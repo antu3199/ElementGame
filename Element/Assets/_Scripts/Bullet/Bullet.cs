@@ -61,7 +61,7 @@ public class Bullet : PooledObject
       return;
     }
 
-    this.ReturnBullet();
+    this.DestroyBullet();
   }
 
   /// <summary>
@@ -167,7 +167,7 @@ public class Bullet : PooledObject
       if (this.timeCount >= this.destroyAfterTime)
       {
         // Release
-        this.ReturnBullet();
+        this.DestroyBullet();
         return;
       }
     }
@@ -241,7 +241,7 @@ public class Bullet : PooledObject
   }
 
 
-  private void ReturnBullet() {
+  public void DestroyBullet() {
     this.baseAngle = 0f;
     this.bulletTransform.rotation = Quaternion.Euler(bulletTransform.rotation.x, bulletTransform.rotation.y, baseAngle + angle);
 
