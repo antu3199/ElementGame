@@ -14,25 +14,25 @@ public sealed class BulletController : MonoBehaviour
   public int shotIndex = 0;
 
   // "Set a shot pattern
-  public List<BulletShooterBase> m_shotObjs;
+  public List<BulletShooterBase> shotObjs;
 
   // "Set a delay time to starting next shot pattern"
-  public float m_afterDelay;
+  public float afterDelay;
 
-  private bool m_shooting;
+  private bool isShooting;
 
   // Returns whether or not we are shooting
-  public bool shooting { get { return m_shooting; } }
+  public bool shooting { get { return isShooting; } }
 
   private void Start()
   {
-    m_shotObjs = new List<BulletShooterBase>(gameObject.GetComponentsInChildren<BulletShooterBase>());
+    this.shotObjs = new List<BulletShooterBase>(gameObject.GetComponentsInChildren<BulletShooterBase>());
     StartShotRoutine();
   }
 
   private void OnDisable()
   {
-    m_shooting = false;
+    this.isShooting = false;
   }
 
   /// <summary>
@@ -40,12 +40,12 @@ public sealed class BulletController : MonoBehaviour
   /// </summary>
   public void StartShotRoutine()
   {
-    if (m_shooting)
+    if (this.isShooting)
     {
       Debug.LogWarning("Already shooting.");
       return;
     }
-    m_shooting = true;
+    this.isShooting = true;
 
     StartCoroutine(ShotCoroutine());
   }
@@ -57,25 +57,25 @@ public sealed class BulletController : MonoBehaviour
 
     while (true)
     {
-      if (m_shotObjs[this.shotIndex] != null)
+      if (shotObjs[this.shotIndex] != null)
       {
-        m_shotObjs[this.shotIndex].Shot();
+        shotObjs[this.shotIndex].Shot();
       }
 
-      yield return new WaitForSeconds(m_afterDelay);
+      yield return new WaitForSeconds(afterDelay);
 
-      if (m_shooting == false)
+      if (isShooting == false)
       {
         break;
       }
     }
 
-    m_shooting = false;
+    isShooting = false;
   }
 
   // Forcefully stop the shot coroutine
   public void StopShotRoutine()
   {
-    m_shooting = false;
+    isShooting = false;
   }
 }

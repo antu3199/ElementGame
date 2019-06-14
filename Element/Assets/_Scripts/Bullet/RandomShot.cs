@@ -8,7 +8,7 @@ public class RandomShot : BulletShooterBase
   [Header("===== RandomShot Settings =====")]
   // "Set a angle of shot. (0 to 360)"
   // "Set a delay time between bullet and next bullet. (sec)"
-  public float m_betweenDelay = 0.1f;
+  public float betweenDelay = 0.1f;
   public float minimumAngleDistance = 10f;
   public float minimumAngleSeparation = 25f;
   float prevAngle = 0;
@@ -20,23 +20,23 @@ public class RandomShot : BulletShooterBase
 
   private IEnumerator ShotCoroutine()
   {
-    if (m_bulletNum <= 0 || m_bulletSpeed <= 0f)
+    if (base.bulletNum <= 0 || base.bulletSpeed <= 0f)
     {
       Debug.LogWarning("Cannot shot because BulletNum or BulletSpeed is not set.");
       yield break;
     }
-    if (m_shooting)
+    if (base.isShooting)
     {
       yield break;
     }
-    m_shooting = true;
+    base.isShooting = true;
 
-    for (int i = 0; i < m_bulletNum; i++)
+    for (int i = 0; i < base.bulletNum; i++)
     {
-      if (0 < i && 0f < m_betweenDelay)
+      if (0 < i && 0f < this.betweenDelay)
       {
         FiredShot();
-        yield return new WaitForSeconds(m_betweenDelay);
+        yield return new WaitForSeconds(this.betweenDelay);
       }
 
       var bullet = GetBullet(transform.position);
@@ -52,7 +52,7 @@ public class RandomShot : BulletShooterBase
         shootingAngle = Utils2D.GetNormalizedAngle(shootingAngle);
       }
 
-      ShotBullet(bullet, m_bulletSpeed, shootingAngle);
+      ShotBullet(bullet, bulletSpeed, shootingAngle);
       this.prevAngle = shootingAngle;
     }
 

@@ -9,47 +9,47 @@ public abstract class BulletShooterBase : MonoBehaviour
 {
   [Header("=== Bullet Base Settings ===")]
   // Sets a "Prefab" (the sprite that we will shoot)
-  public Bullet m_bulletPrefab;
+  public Bullet bulletPrefab;
   // The number of bullets we will shoot
-  public int m_bulletNum = 10;
+  public int bulletNum = 10;
   // Speed of the bullet
-  public float m_bulletSpeed = 2f;
+  public float bulletSpeed = 2f;
   // Acceleration of the bullet."
-  public float m_accelerationSpeed = 0f;
+  public float accelerationSpeed = 0f;
   // Do we have a speed limiter?
-  public bool m_useMaxSpeed = false;
+  public bool useMaxSpeed = false;
   // Sets the max speed (Valid only if m_useMaxSpeed is enabled)
-  public float m_maxSpeed = 0f;
+  public float maxSpeed = 0f;
   // Do we have a min speed?
-  public bool m_useMinSpeed = false;
+  public bool useMinSpeed = false;
   //  Sets minimum speed (valid only if useMinSpeed is checked)
-  public float m_minSpeed = 0f;
+  public float minSpeed = 0f;
   // For turning bullets, the accleration
-  public float m_accelerationTurn = 0f;
+  public float accelerationTurn = 0f;
   // TODO: Pause/resume
-  public bool m_usePauseAndResume = false;
+  public bool usePauseAndResume = false;
   // "Set a time to pause bullet."
-  public float m_pauseTime = 0f;
+  public float pauseTime = 0f;
   // "Set a time to resume bullet."
-  public float m_resumeTime = 0f;
+  public float resumeTime = 0f;
   // Automatically destroy after an amount of time
-  public bool m_useAutoRelease = false;
+  public bool useDestroyAfterTime = false;
   // Set a time to destroy
-  public float m_autoReleaseTime = 10f;
+  public float destroyAfterTime = 10f;
 
   // Whether or not angle will be inherited
-  public bool m_inheritAngle = true;
+  public bool inheritAngle = true;
 
 
   // Callback to be fired when shot is fired
-  public UnityEvent m_shotFiredCallbackEvents = new UnityEvent();
+  public UnityEvent shotFiredCallback = new UnityEvent();
   // Callback to be fired when shot is finished.
-  public UnityEvent m_shotFinishedCallbackEvents = new UnityEvent();
+  public UnityEvent shotFinishedCallback = new UnityEvent();
 
   // Flag for shooting
-  protected bool m_shooting;
+  protected bool isShooting;
 
-  public bool shooting { get { return m_shooting; } }
+  public bool shooting { get { return isShooting; } }
 
   // Flag for lockon
   public virtual bool lockOnShot { get { return false; } }
@@ -57,7 +57,7 @@ public abstract class BulletShooterBase : MonoBehaviour
   // Sets shooting to false
   protected virtual void OnDisable()
   {
-    m_shooting = false;
+    this.isShooting = false;
   }
 
   // "Main" function that shoots a bullet based on bullet pattern
@@ -66,26 +66,26 @@ public abstract class BulletShooterBase : MonoBehaviour
   // Invoke callback for fired shot
   protected void FiredShot()
   {
-    m_shotFiredCallbackEvents.Invoke();
+    this.shotFiredCallback.Invoke();
   }
 
   // Invoke callback for finished shot
   protected void FinishedShot()
   {
-    m_shooting = false;
-    m_shotFinishedCallbackEvents.Invoke();
+    this.isShooting = false;
+    this.shotFinishedCallback.Invoke();
   }
 
   // Get bullet from ObjectPool
   protected Bullet GetBullet(Vector3 position, bool forceInstantiate = false)
   {
-    if (m_bulletPrefab == null)
+    if (this.bulletPrefab == null)
     {
       Debug.LogWarning("Cannot generate a bullet because BulletPrefab is not set.");
       return null;
     }
 
-    Bullet bullet = m_bulletPrefab.GetPooledInstance<Bullet>(position);
+    Bullet bullet = this.bulletPrefab.GetPooledInstance<Bullet>(position);
     if (bullet == null)
     {
       return null;
@@ -104,12 +104,12 @@ public abstract class BulletShooterBase : MonoBehaviour
       return;
     }
     bullet.Shot(this,
-                speed, angle, m_accelerationSpeed, m_accelerationTurn,
+                speed, angle, accelerationSpeed, accelerationTurn,
                 homing, homingTarget, homingAngleSpeed,
                 wave, waveSpeed, waveRangeSize,
-                m_usePauseAndResume, m_pauseTime, m_resumeTime,
-                m_useAutoRelease, m_autoReleaseTime,
-                Utils2D.AXIS.X_AND_Y, m_inheritAngle,
-                m_useMaxSpeed, m_maxSpeed, m_useMinSpeed, m_minSpeed);
+                usePauseAndResume, pauseTime, resumeTime,
+                useDestroyAfterTime, destroyAfterTime,
+                Utils2D.AXIS.X_AND_Y, inheritAngle,
+                useMaxSpeed, maxSpeed, useMinSpeed, minSpeed);
   }
 }
