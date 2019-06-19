@@ -12,6 +12,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
   public PlayerCollision playerCollision;
+  public PlayerHealth playerHealth;
   void Awake()
   {
     GameStateManager.Instance.player = this;
