@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
 {
   public PlayerCollision playerCollision;
   public PlayerHealth playerHealth;
+  public PlayerMovement playerMovement;
   void Awake()
   {
     GameStateManager.Instance.player = this;
