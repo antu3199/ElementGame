@@ -1079,6 +1079,59 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &1137350127
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4850878613630532, guid: 2b77fe8c12173dc49b3942e5463c7ecc, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4850878613630532, guid: 2b77fe8c12173dc49b3942e5463c7ecc, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4850878613630532, guid: 2b77fe8c12173dc49b3942e5463c7ecc, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4850878613630532, guid: 2b77fe8c12173dc49b3942e5463c7ecc, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4850878613630532, guid: 2b77fe8c12173dc49b3942e5463c7ecc, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4850878613630532, guid: 2b77fe8c12173dc49b3942e5463c7ecc, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4850878613630532, guid: 2b77fe8c12173dc49b3942e5463c7ecc, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4850878613630532, guid: 2b77fe8c12173dc49b3942e5463c7ecc, type: 2}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 114633659429373878, guid: 2b77fe8c12173dc49b3942e5463c7ecc,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 627142197}
+    - target: {fileID: 114633659429373878, guid: 2b77fe8c12173dc49b3942e5463c7ecc,
+        type: 2}
+      propertyPath: particle
+      value: 
+      objectReference: {fileID: 114569173145078180, guid: 42ce4557f584d6a44bf02319f9184423,
+        type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2b77fe8c12173dc49b3942e5463c7ecc, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &1183770081
 GameObject:
   m_ObjectHideFlags: 0
