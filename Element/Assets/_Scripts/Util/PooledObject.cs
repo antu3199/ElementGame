@@ -46,4 +46,8 @@ public class PooledObject : MonoBehaviour
     //Override me!
   }
 
+  public void OnDestroy() {
+    this.ReturnToPool();
+  }
+
 }
