@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Anthony_MainMenu.unity
     guid: 6b40b0ab49910544697f96973afeec17
-  - enabled: 1
-    path: Assets/_Scenes/Game.unity
-    guid: 1438ffb09bc548d438a5fecb59597890
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}
