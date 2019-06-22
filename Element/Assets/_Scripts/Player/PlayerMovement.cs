@@ -13,8 +13,6 @@ public class PlayerMovement : MonoBehaviour
 
   public float maxDistance = 2f;
 
-  public Canvas parentCanvas;
-
   // Use this for initialization
   void Start()
   {
