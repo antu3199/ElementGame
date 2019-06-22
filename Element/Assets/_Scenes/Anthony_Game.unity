@@ -5259,6 +5259,7 @@ GameObject:
   - component: {fileID: 627142202}
   - component: {fileID: 627142203}
   - component: {fileID: 627142204}
+  - component: {fileID: 627142205}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -5367,7 +5368,8 @@ MonoBehaviour:
   playerCollision: {fileID: 627142198}
   playerHealth: {fileID: 627142201}
   playerMovement: {fileID: 627142202}
-  playerTransformationAnim: {fileID: 627142204}
+  playerAbility: {fileID: 627142204}
+  playerPoints: {fileID: 627142205}
 --- !u!114 &627142201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5392,10 +5394,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4627748dfc8cc44399a0fb953f9787b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 1
+  movementSpeed: 2
   line: {fileID: 1601375944}
   curCamera: {fileID: 519420031}
-  maxDistance: 1
+  maxDistance: 2
   parentCanvas: {fileID: 0}
 --- !u!50 &627142203
 Rigidbody2D:
@@ -5428,9 +5430,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8709e170862ffab42b57e36a1ddd90ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abilityPrefabs:
+  - {fileID: 114234200773196702, guid: 6a9bb83ba642db84aa177439698e1920, type: 2}
+  ability: {fileID: 0}
   particleS: {fileID: 87155722}
   animationDuration: 1
-  timeBeforeChange: 2
+  timeBeforeChange: 1
+--- !u!114 &627142205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 627142195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 258f69c3355bc493ca6ff9636c07d8bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  points: 0
 --- !u!1 &777885696
 GameObject:
   m_ObjectHideFlags: 0
@@ -6940,6 +6957,7 @@ GameObject:
   - component: {fileID: 1595396412}
   - component: {fileID: 1595396411}
   - component: {fileID: 1595396410}
+  - component: {fileID: 1595396414}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -7025,6 +7043,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1595396414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1595396409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35a169b9efed12c48b9c586ebb0ada2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleTransformer: {fileID: 1322604110}
+  slider: {fileID: 1784121213}
 --- !u!1 &1601375943
 GameObject:
   m_ObjectHideFlags: 0

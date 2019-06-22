@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
       line.SetPosition(1, curPos);
       line.transform.position = curPos;
 
-      this.transform.position += delta * movementSpeed * Time.deltaTime;
+      this.transform.position += (curPos - pivotPos) * movementSpeed * Time.deltaTime;
     }
     else if (Input.GetMouseButtonUp(0))
     {
