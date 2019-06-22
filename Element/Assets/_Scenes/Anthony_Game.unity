@@ -5259,6 +5259,7 @@ GameObject:
   - component: {fileID: 627142202}
   - component: {fileID: 627142203}
   - component: {fileID: 627142204}
+  - component: {fileID: 627142205}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -5368,6 +5369,7 @@ MonoBehaviour:
   playerHealth: {fileID: 627142201}
   playerMovement: {fileID: 627142202}
   playerAbility: {fileID: 627142204}
+  playerPoints: {fileID: 627142205}
 --- !u!114 &627142201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5434,6 +5436,18 @@ MonoBehaviour:
   particleS: {fileID: 87155722}
   animationDuration: 1
   timeBeforeChange: 1
+--- !u!114 &627142205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 627142195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 258f69c3355bc493ca6ff9636c07d8bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  points: 0
 --- !u!1 &777885696
 GameObject:
   m_ObjectHideFlags: 0
