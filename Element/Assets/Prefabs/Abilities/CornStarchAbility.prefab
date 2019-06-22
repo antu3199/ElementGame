@@ -111,6 +111,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visuals: {fileID: 1960484854341966}
+  canvasVisualsPrefab: {fileID: 1401074646273462, guid: a9b7e542414dda340a6dd92af9c456c0,
+    type: 2}
 --- !u!212 &212986670765400164
 SpriteRenderer:
   m_ObjectHideFlags: 1

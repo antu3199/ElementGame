@@ -111,6 +111,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   visuals: {fileID: 1483378440769462}
+  canvasVisualsPrefab: {fileID: 1224056857517892, guid: 9bd301f91c0a0e645a9e5a9ffb9243db,
+    type: 2}
   healAmount: 5
 --- !u!212 &212176973418088450
 SpriteRenderer:
