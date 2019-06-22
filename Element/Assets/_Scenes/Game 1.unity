@@ -476,6 +476,7 @@ GameObject:
   - component: {fileID: 627142200}
   - component: {fileID: 627142201}
   - component: {fileID: 627142202}
+  - component: {fileID: 627142204}
   - component: {fileID: 627142203}
   m_Layer: 0
   m_Name: Player
@@ -584,6 +585,8 @@ MonoBehaviour:
   playerCollision: {fileID: 627142198}
   playerHealth: {fileID: 627142201}
   playerMovement: {fileID: 627142202}
+  playerPoints: {fileID: 627142204}
+  playerTransformationAnim: {fileID: 0}
 --- !u!114 &627142201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -633,6 +636,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &627142204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 627142195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 258f69c3355bc493ca6ff9636c07d8bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  points: 0
 --- !u!1 &653519153
 GameObject:
   m_ObjectHideFlags: 0
@@ -2281,6 +2296,16 @@ Prefab:
       propertyPath: accelerationTurn
       value: 1.92
       objectReference: {fileID: 0}
+    - target: {fileID: 114860145957802640, guid: 1f06f8a807231c94788f1a084f94b38c,
+        type: 2}
+      propertyPath: shotIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114485839363835354, guid: 1f06f8a807231c94788f1a084f94b38c,
+        type: 2}
+      propertyPath: targetTransform
+      value: 
+      objectReference: {fileID: 627142197}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f06f8a807231c94788f1a084f94b38c, type: 2}
   m_IsPrefabAsset: 0
