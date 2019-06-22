@@ -13,6 +13,7 @@ public abstract class PlayerAbilityBase : MonoBehaviour
     public abstract PARTICLE_TYPES type { get; }
 	public abstract string commonName { get; }
 	public abstract string chemicalName { get; }
+    public GameObject visuals;
 
     void Update()
     {

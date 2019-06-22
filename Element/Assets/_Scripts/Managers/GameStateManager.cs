@@ -18,6 +18,7 @@ public class GameStateManager : Singleton<GameStateManager>
 
   // Where we will store the current "particle points"
   public float particlePoints;
+  public float particlePointsToNextLevel;
   // Reference to the player. If not in game, this is null
   // [HideInInspector] // Should hide in inspector, but may be useful for debugging
   public Player player;
@@ -36,6 +37,14 @@ public class GameStateManager : Singleton<GameStateManager>
     switch (this.gameState)
     {
       // TODO (maybe not even needed)
+    }
+  }
+
+  public void IncreasePoints(int delta) {
+    this.particlePoints += delta;
+    if (this.particlePoints >= this.particlePointsToNextLevel) {
+      this.particlePoints = 0;
+      this.ui.particleTransformer.TransformParticle();
     }
   }
 

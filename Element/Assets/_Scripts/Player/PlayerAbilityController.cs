@@ -5,7 +5,7 @@ using UnityEngine;
 
 
 public class PlayerAbilityController : MonoBehaviour {
-	public List<PlayerAbilityBase> abilityPrefabs;
+
 	public PlayerAbilityBase ability;
 	public ParticleSystem particleS;
 	
@@ -17,41 +17,37 @@ public class PlayerAbilityController : MonoBehaviour {
 	}
 
 	public PlayerAbilityBase TransformParticle(bool anim = false) {
-	   int randIndex = this.GetRandAbilityIndex();
-	   PlayerAbilityBase abilityInfo = abilityPrefabs[randIndex];
+	   PlayerAbilityBase abilityInfo = Dictionaries.Instance.getRandAbilityPrefab();
 	   if (anim) {
-         this.PlayParticleTransformationAnimation(randIndex);
+         this.PlayParticleTransformationAnimation(abilityInfo);
 	   } else {
-		   this.ChangeParticle(randIndex);
+		   this.ChangeParticle(abilityInfo);
 	   }
 	   return abilityInfo;
 	}
 
-	public int GetRandAbilityIndex() {
-		return Random.Range(0, this.abilityPrefabs.Count);
+	private void PlayParticleTransformationAnimation(PlayerAbilityBase ability) {
+       StartCoroutine(particleAnimation(this.animationDuration, ability));
 	}
 
-	private void PlayParticleTransformationAnimation(int index) {
-       StartCoroutine(particleAnimation(this.animationDuration, index));
-	}
-
-	IEnumerator particleAnimation(float time, int index) {
+	IEnumerator particleAnimation(float time, PlayerAbilityBase ability) {
        this.particleS.Play();
 	   yield return new WaitForSeconds(timeBeforeChange);
 
 	   this.GetComponent<SpriteRenderer>().color = Color.blue;
-	   this.ChangeParticle(index);
+	   this.ChangeParticle(ability);
 
 	   yield return new WaitForSeconds(animationDuration);
 	   this.particleS.Stop();
 	}
 
-	private void ChangeParticle(int index) {
+	private void ChangeParticle(PlayerAbilityBase ability) {
 		if (this.ability != null) {
 		  Destroy(this.ability.gameObject);
 		}
 		
-		PlayerAbilityBase newAbility = Instantiate<PlayerAbilityBase>(this.abilityPrefabs[index]);
+		PlayerAbilityBase newAbility = Instantiate<PlayerAbilityBase>(ability);
+		newAbility.transform.position = this.transform.position;
 		newAbility.transform.SetParent(this.transform);
 		this.ability = newAbility;
 	}

@@ -15,6 +15,7 @@ public class ParticleTransformer : MonoBehaviour {
 	public float displayTime;
 	private bool isTransforming = false;
 
+
 	void Start () {
 	}
 	
@@ -30,8 +31,6 @@ public class ParticleTransformer : MonoBehaviour {
 		if (this.isTransforming) return;
 
 		PlayerAbilityController abilityController = GameStateManager.Instance.player.playerAbility;
-        
-		int randIndex = abilityController.GetRandAbilityIndex();
 		// Set particle info here...
 		PlayerAbilityBase info = GameStateManager.Instance.player.playerAbility.TransformParticle();
 		Debug.Log(info.commonName);

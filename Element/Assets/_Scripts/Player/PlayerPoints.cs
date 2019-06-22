@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class PlayerPoints : MonoBehaviour
 {
-    public float points;
-
-    public void UpdatePoint(float deltaPoint)
+    public void UpdatePoint(int deltaPoint)
     {
-        this.points = points + deltaPoint;
-        Debug.Log("Point is now: " + this.points);
+        GameStateManager.Instance.IncreasePoints(deltaPoint);
     }
 }
