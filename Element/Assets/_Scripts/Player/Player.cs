@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
   public PlayerHealth playerHealth;
   public PlayerMovement playerMovement;
 
-  public PlayerTransformationAnimation playerTransformationAnim;
+  public PlayerAbilityController playerAbility;
   void Awake()
   {
     GameStateManager.Instance.player = this;
