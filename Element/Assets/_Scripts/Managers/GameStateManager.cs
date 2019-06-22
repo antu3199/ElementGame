@@ -9,6 +9,9 @@ public enum GAME_STATE
   GAME_PAUSE,
   GAME_STOP
 }
+
+
+
 // Construct a singleton instance of this Object
 public class GameStateManager : Singleton<GameStateManager>
 {
@@ -18,6 +21,7 @@ public class GameStateManager : Singleton<GameStateManager>
   // Reference to the player. If not in game, this is null
   // [HideInInspector] // Should hide in inspector, but may be useful for debugging
   public Player player;
+  public ParticleTransformer particleTransformer;
 
   // Specifies the current game state:
   public GAME_STATE gameState { get; private set; }
@@ -34,4 +38,5 @@ public class GameStateManager : Singleton<GameStateManager>
       // TODO (maybe not even needed)
     }
   }
+
 }
