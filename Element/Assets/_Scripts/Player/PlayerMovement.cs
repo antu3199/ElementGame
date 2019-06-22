@@ -4,25 +4,63 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float movementSpeed = 1.0f;
-    private Vector3 prevMousePos = Vector3.zero;
-    public float maxSpeed = 1.0f;
+  public float movementSpeed = 1.0f;
 
-    // Use this for initialization
-    void Start()
+  private Vector3 pivot;
+  private Vector3 cur;
+  public LineRenderer line;
+  public Camera curCamera;
+
+  public float maxDistance = 2f;
+
+  public Canvas parentCanvas;
+
+  // Use this for initialization
+  void Start()
+  {
+    this.line.gameObject.SetActive(false);
+  }
+
+  // Update is called once per frame
+  void Update()
+  {
+    if (Input.GetMouseButtonDown(0))
     {
-        prevMousePos = Input.mousePosition;
-    }
+      this.pivot = Input.mousePosition;
 
-    // Update is called once per frame
-    void Update()
+      Vector3 curPivot = this.getScreenPoint(this.pivot);
+      line.SetPosition(0, curPivot);
+      line.SetPosition(1, curPivot);
+      this.line.gameObject.SetActive(true);
+    }
+    else if (Input.GetMouseButton(0))
     {
-		if (Input.GetMouseButton(0)) {
-			Vector3 deltaMouse = Input.mousePosition - prevMousePos;
-      deltaMouse = new Vector3(Mathf.Clamp(deltaMouse.x, -this.maxSpeed, this.maxSpeed), Mathf.Clamp(deltaMouse.y, -this.maxSpeed, this.maxSpeed), deltaMouse.z);
-			this.transform.position += deltaMouse * movementSpeed * Time.deltaTime;
-		}
+      this.cur = Input.mousePosition;
+      Vector3 pivotPos = this.getScreenPoint(this.pivot);
+      Vector3 curPos = this.getScreenPoint(this.cur);
+      Vector3 delta = (curPos - pivotPos);
+      if (Vector3.Distance(pivotPos, curPos) >= maxDistance)
+      {
+        Vector3 dir = delta.normalized;
+        curPos = pivotPos + dir * this.maxDistance;
+      }
 
-		this.prevMousePos = Input.mousePosition;
+      line.SetPosition(0, pivotPos);
+      line.SetPosition(1, curPos);
+      line.transform.position = curPos;
+
+      this.transform.position += delta * movementSpeed * Time.deltaTime;
     }
+    else if (Input.GetMouseButtonUp(0))
+    {
+      this.line.gameObject.SetActive(false);
+    }
+  }
+
+  Vector3 getScreenPoint(Vector3 movePo)
+  {
+    Vector3 screenPos = this.curCamera.ScreenToWorldPoint(movePo);
+    screenPos = new Vector3(screenPos.x, screenPos.y, 0);
+    return screenPos;
+  }
 }
