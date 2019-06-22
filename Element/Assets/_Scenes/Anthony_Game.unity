@@ -113,6 +113,48 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &148506770
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4632619494376552, guid: 42ce4557f584d6a44bf02319f9184423, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4632619494376552, guid: 42ce4557f584d6a44bf02319f9184423, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4632619494376552, guid: 42ce4557f584d6a44bf02319f9184423, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4632619494376552, guid: 42ce4557f584d6a44bf02319f9184423, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4632619494376552, guid: 42ce4557f584d6a44bf02319f9184423, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4632619494376552, guid: 42ce4557f584d6a44bf02319f9184423, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4632619494376552, guid: 42ce4557f584d6a44bf02319f9184423, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4632619494376552, guid: 42ce4557f584d6a44bf02319f9184423, type: 2}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 42ce4557f584d6a44bf02319f9184423, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &243357776
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,6 +518,7 @@ GameObject:
   - component: {fileID: 627142200}
   - component: {fileID: 627142201}
   - component: {fileID: 627142202}
+  - component: {fileID: 627142203}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -612,6 +655,26 @@ MonoBehaviour:
   curCamera: {fileID: 519420031}
   maxDistance: 2
   parentCanvas: {fileID: 653519156}
+--- !u!50 &627142203
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 627142195}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &653519153
 GameObject:
   m_ObjectHideFlags: 0

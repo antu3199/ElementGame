@@ -9,8 +9,9 @@ public class PlayerCollision : MonoBehaviour {
     if (other.tag == "Enemy") {
       // Do enemy collision
       // Nothing for now.
-    } else if (other.tag == "Point") {
+    } else if (other.tag == "Particle") {
       // Do particle point thing
+      Debug.Log("Hello");
     } else if (other.tag == "EnemyBullet") {
       Bullet bulletScript = other.transform.parent.GetComponent<Bullet>();
       bulletScript.DestroyBullet();
