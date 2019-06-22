@@ -5,16 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/MainMenu.unity
     guid: 0e7b75bddbaa7f64ca5b47288ec7bf71
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/Anthony_Game.unity
     guid: 7b52fd27767869f458bacc56e68141eb
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/Anthony_MainMenu.unity
     guid: 6b40b0ab49910544697f96973afeec17
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/_Scenes/Dhivo_Game.unity
+    guid: 80ae1ceb73a290b44a5f7a93127816f2
   m_configObjects: {}
