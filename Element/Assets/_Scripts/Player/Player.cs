@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
   public PlayerCollision playerCollision;
   public PlayerHealth playerHealth;
   public PlayerMovement playerMovement;
+  public PlayerPoints playerPoints;
   void Awake()
   {
     GameStateManager.Instance.player = this;
