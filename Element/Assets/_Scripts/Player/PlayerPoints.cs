@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerPoints : MonoBehaviour
 {
     public float points;
+    public float maxPoints = 10;
 
     public void UpdatePoint(float deltaPoint)
     {
