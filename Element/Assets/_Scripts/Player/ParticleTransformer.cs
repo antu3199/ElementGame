@@ -3,12 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum PARTICLE_TYPES
-{
-  BASE = 0,
-  WATER = 1,
-  CORNSTARCH = 2
-}
+
+
 public class ParticleTransformer : MonoBehaviour {
 
     // TODO: Add prefab for each particle instead...
@@ -20,7 +16,6 @@ public class ParticleTransformer : MonoBehaviour {
 	private bool isTransforming = false;
 
 	void Start () {
-		GameStateManager.Instance.particleTransformer = this;
 	}
 	
 	// Update is called once per frame
@@ -34,10 +29,12 @@ public class ParticleTransformer : MonoBehaviour {
 
 		if (this.isTransforming) return;
 
-		PARTICLE_TYPES transformInto = PARTICLE_TYPES.WATER;
-	    
+		PlayerAbilityController abilityController = GameStateManager.Instance.player.playerAbility;
+        
+		int randIndex = abilityController.GetRandAbilityIndex();
 		// Set particle info here...
-		GameStateManager.Instance.player.playerTransformationAnim.PlayParticleTransformationAnimation();
+		PlayerAbilityBase info = GameStateManager.Instance.player.playerAbility.TransformParticle();
+		Debug.Log(info.commonName);
 
 		StartCoroutine(this.transformCor());
 	}

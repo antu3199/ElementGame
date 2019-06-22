@@ -13,8 +13,6 @@ public class PlayerMovement : MonoBehaviour
 
   public float maxDistance = 2f;
 
-  public Canvas parentCanvas;
-
   // Use this for initialization
   void Start()
   {
@@ -49,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
       line.SetPosition(1, curPos);
       line.transform.position = curPos;
 
-      this.transform.position += delta * movementSpeed * Time.deltaTime;
+      this.transform.position += (curPos - pivotPos) * movementSpeed * Time.deltaTime;
     }
     else if (Input.GetMouseButtonUp(0))
     {
