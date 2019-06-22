@@ -11,7 +11,9 @@ public class PlayerCollision : MonoBehaviour {
       // Nothing for now.
     } else if (other.tag == "Particle") {
       // Do particle point thing
-      Debug.Log("Hello");
+      PooledObject particle = other.gameObject.GetComponent<PooledObject>();
+      particle.ReturnToPool();
+      GameStateManager.Instance.player.playerPoints.UpdatePoint(1);
     } else if (other.tag == "EnemyBullet") {
       Bullet bulletScript = other.transform.parent.GetComponent<Bullet>();
       bulletScript.DestroyBullet();
