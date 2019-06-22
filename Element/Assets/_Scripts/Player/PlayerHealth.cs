@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public float maxHealth = 100;
-    public float health = 100;
+    public float maxHealth = 10;
+    public float health = 10;
     void Start()
     {
 		this.health = maxHealth;

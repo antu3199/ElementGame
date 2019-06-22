@@ -7,6 +7,7 @@ public class UIController : MonoBehaviour {
     
 	public ParticleTransformer particleTransformer;
 	public Slider slider;
+    public Slider healthSlider;
 
 	void Start () {
 		GameStateManager.Instance.ui = this;
