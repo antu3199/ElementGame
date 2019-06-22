@@ -6,7 +6,6 @@ public class DoubleTap : MonoBehaviour
 {
 
     int TapCount;
-    public float MaxDubbleTapTime = 5;
     float NewTime;
 
     void Start()
@@ -28,11 +27,11 @@ public class DoubleTap : MonoBehaviour
             if (TapCount == 1)
             {
 
-                NewTime = Time.time + MaxDubbleTapTime;
+                NewTime = Time.time + 1f;
             }
             else if (TapCount == 2 && Time.time <= NewTime)
-            {
-                print("Dubble tap");
+            { 
+                print("double tap");
 
                 TapCount = 0;
             }
