@@ -3,17 +3,38 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIController : MonoBehaviour {
-    
-	public ParticleTransformer particleTransformer;
-	public Slider slider;
+public class UIController : MonoBehaviour
+{
 
-	void Start () {
-		GameStateManager.Instance.ui = this;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+  public ParticleTransformer particleTransformer;
+  public Slider pointsSlider;
+  public Slider healthSlider;
+
+  public Text healthSliderText;
+  public Text pointsSliderText;
+
+  void Start()
+  {
+    GameStateManager.Instance.ui = this;
+    GameStateManager.Instance.UpdatePoints(0);
+    GameStateManager.Instance.updateHealth(0);
+  }
+
+  public void setPointsSliderText(float cur, float max) {
+     this.pointsSliderText.text = this.formatFract(cur, max);
+  }
+
+  public void setHealthSliderText(float cur, float max) {
+    this.healthSliderText.text = this.formatFract(cur, max);
+  }
+
+  private string formatFract(float cur, float max) {
+    return cur + "/" + max;
+  }
+
+  // Update is called once per frame
+  void Update()
+  {
+
+  }
 }

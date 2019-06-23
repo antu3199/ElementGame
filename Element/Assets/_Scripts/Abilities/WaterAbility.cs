@@ -11,6 +11,6 @@ public class WaterAbility : PlayerAbilityBase {
   }}
 	public float healAmount;
 	public override void useAbility() {
-		GameStateManager.Instance.player.playerHealth.updateHealth(healAmount);
+		GameStateManager.Instance.updateHealth(healAmount);
 	}
 }

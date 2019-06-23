@@ -27,6 +27,10 @@ public class GameStateManager : Singleton<GameStateManager>
   // Specifies the current game state:
   public GAME_STATE gameState { get; private set; }
 
+  public float maxHealth = 10;
+  public float health = 10;
+
+
   public void changeState(GAME_STATE stateTo)
   {
     if (this.gameState == stateTo)
@@ -40,12 +44,21 @@ public class GameStateManager : Singleton<GameStateManager>
     }
   }
 
-  public void IncreasePoints(int delta) {
+  public void UpdatePoints(int delta) {
     this.particlePoints += delta;
+    this.ui.pointsSlider.value = Mathf.Clamp(this.particlePoints / this.particlePointsToNextLevel, 0, 1);
     if (this.particlePoints >= this.particlePointsToNextLevel) {
       this.particlePoints = 0;
       this.ui.particleTransformer.TransformParticle();
     }
+    this.ui.setPointsSliderText(this.particlePoints, this.particlePointsToNextLevel);
   }
+
+	public void updateHealth(float deltaHealth) {
+		this.health = Mathf.Clamp(this.health + deltaHealth, 0, this.maxHealth);
+    float t = health / maxHealth;
+    this.ui.healthSlider.value = t;
+    this.ui.setHealthSliderText(health, maxHealth);
+	}
 
 }

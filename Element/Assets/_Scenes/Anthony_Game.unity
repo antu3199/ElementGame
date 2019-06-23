@@ -6557,7 +6557,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 182.29999}
+  m_AnchoredPosition: {x: 0, y: -25}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1319834904
@@ -6655,11 +6655,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f70bde666dfbdf146a0f63455ceeb291, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleTransformInto: {fileID: 1852563765}
   fadeInGroup: {fileID: 1711767179}
   fullAlpha: 0.45
   transitionSpeed: 1
   displayTime: 5
+  particleImageContainer: {fileID: 0}
+  commonNameText: {fileID: 0}
+  formulaText: {fileID: 0}
+  descriptionText: {fileID: 0}
 --- !u!222 &1322604112
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7344,7 +7347,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particleTransformer: {fileID: 1322604110}
-  slider: {fileID: 1784121213}
+  pointsSlider: {fileID: 1319834904}
+  healthSlider: {fileID: 1784121213}
 --- !u!1 &1601375943
 GameObject:
   m_ObjectHideFlags: 0

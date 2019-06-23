@@ -69,6 +69,8 @@ public class ParticleTransformer : MonoBehaviour
       yield return null;
     }
 
+    GameStateManager.Instance.UpdatePoints(0);
+
     yield return new WaitForSeconds(this.displayTime);
 
     while (t > 0)
