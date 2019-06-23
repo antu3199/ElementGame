@@ -22,5 +22,6 @@ public class NickelAbility : PlayerAbilityBase {
       curTime = 0;
     }
     
+    
   }
 }
