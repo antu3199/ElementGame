@@ -57,11 +57,12 @@ public sealed class BulletController : MonoBehaviour
 
     while (true)
     {
-      if (shotObjs[this.shotIndex] != null)
-      {
+	  if (this.shotIndex == 3) {
+		shotObjs[3].Shot();
+		shotObjs[1].Shot();
+	  } else if (shotObjs[this.shotIndex] != null) {
         shotObjs[this.shotIndex].Shot();
       }
-
       yield return new WaitForSeconds(afterDelay);
 
       if (isShooting == false)
