@@ -7,6 +7,8 @@ public class PlayerCollision : MonoBehaviour {
   public bool canCollide = true;
   public CircleCollider2D playerCollider;
 
+  public bool hasArmor = false;
+
   void OnTriggerEnter2D(Collider2D other) {
     if (!canCollide) return;
 
@@ -22,7 +24,8 @@ public class PlayerCollision : MonoBehaviour {
     } else if (other.tag == "EnemyBullet") {
       Bullet bulletScript = other.transform.parent.GetComponent<Bullet>();
       bulletScript.DestroyBullet();
-      GameStateManager.Instance.updateHealth(-1);
+       
+      if(!hasArmor) GameStateManager.Instance.updateHealth(-1);
 
     }
   }
