@@ -398,7 +398,7 @@ TextMesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1694599819740450}
-  m_Text: O
+  m_Text: H
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -419,7 +419,7 @@ TextMesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1070355391006472}
-  m_Text: O
+  m_Text: H
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -440,7 +440,7 @@ TextMesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1121661392412166}
-  m_Text: H
+  m_Text: O
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -468,6 +468,7 @@ MonoBehaviour:
   visuals: {fileID: 1483378440769462}
   canvasVisualsPrefab: {fileID: 1224056857517892, guid: 9bd301f91c0a0e645a9e5a9ffb9243db,
     type: 2}
+  abilityAvailable: 1
   healEffect: {fileID: 198065029869071080}
   healEffectDuration: 1
   healAmount: 5
@@ -758,7 +759,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.3
+      scalar: 1
       minScalar: 1
       maxCurve:
         serializedVersion: 2

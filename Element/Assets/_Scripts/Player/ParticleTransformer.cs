@@ -13,7 +13,7 @@ public class ParticleTransformer : MonoBehaviour
   public float fullAlpha;
   public float transitionSpeed;
   public float displayTime;
-  private bool isTransforming = false;
+  public bool isTransforming{get; private set;}
 
   // Variables for screen info:
   public RectTransform particleImageContainer;

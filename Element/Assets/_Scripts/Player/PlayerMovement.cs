@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
   }
 
   // Update is called once per frame
-  void Update()
+  public void PlayerUpdate()
   {
     if (Input.GetMouseButtonDown(0))
     {
@@ -69,5 +69,11 @@ public class PlayerMovement : MonoBehaviour
     Vector3 screenPos = this.curCamera.ScreenToWorldPoint(movePo);
     screenPos = new Vector3(screenPos.x, screenPos.y, 0);
     return screenPos;
+  }
+
+  public void SetCanMove(bool move) {
+    if (move == false) {
+      this.line.gameObject.SetActive(false);
+    }
   }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum GAME_STATE
 {
@@ -32,6 +33,8 @@ public class GameStateManager : Singleton<GameStateManager>
    
   public float score = 0;
   public float scoreIncreaseSpeed = 10f;
+
+  public float timeBeforeGoBackToMainMenu = 5f;
   
   void Update() {
     if (this.gameState == GAME_STATE.GAME) {
@@ -64,6 +67,8 @@ public class GameStateManager : Singleton<GameStateManager>
   }
 
   public void UpdatePoints(int delta) {
+    if (this.ui.particleTransformer.isTransforming == true && particlePoints + 1 > this.particlePointsToNextLevel) return;
+    
     this.particlePoints += delta;
     this.ui.pointsSlider.value = Mathf.Clamp(this.particlePoints / this.particlePointsToNextLevel, 0, 1);
     if (this.particlePoints >= this.particlePointsToNextLevel) {
@@ -80,6 +85,21 @@ public class GameStateManager : Singleton<GameStateManager>
     float t = health / maxHealth;
     this.ui.healthSlider.value = t;
     this.ui.setHealthSliderText(health, maxHealth);
+
+    if (this.health == 0) {
+      this.player.setCanMove(false);
+      StartCoroutine(this.GoToMainMenuAfterTime(this.timeBeforeGoBackToMainMenu));
+    }
 	}
+  
+
+  IEnumerator GoToMainMenuAfterTime(float time) {
+    yield return new WaitForSeconds(time);
+    this.GoBackToMainMenu();
+  }
+  
+  public void GoBackToMainMenu() {
+    SceneManager.LoadScene("MainMenu");
+  }
 
 }
