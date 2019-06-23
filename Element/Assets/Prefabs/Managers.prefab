@@ -55,6 +55,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityPrefabs:
   - {fileID: 114234200773196702, guid: 6a9bb83ba642db84aa177439698e1920, type: 2}
+  - {fileID: 114821495233304532, guid: a5c3c1ff45994fd448075e0d815618d4, type: 2}
+  - {fileID: 114401518481990558, guid: 7a1791d4f5d19483c82aff9607ad383a, type: 2}
+  - {fileID: 114659625301678688, guid: cf4ad89253021e14d9ca7ed13cecc094, type: 2}
 --- !u!114 &114481499023741108
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -81,3 +84,8 @@ MonoBehaviour:
   particlePointsToNextLevel: 3
   player: {fileID: 0}
   ui: {fileID: 0}
+  maxHealth: 10
+  health: 10
+  score: 0
+  scoreIncreaseSpeed: 10
+  timeBeforeGoBackToMainMenu: 2
