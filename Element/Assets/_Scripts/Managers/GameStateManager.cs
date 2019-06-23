@@ -9,18 +9,27 @@ public enum GAME_STATE
   GAME_PAUSE,
   GAME_STOP
 }
+
+
+
 // Construct a singleton instance of this Object
 public class GameStateManager : Singleton<GameStateManager>
 {
 
   // Where we will store the current "particle points"
   public float particlePoints;
+  public float particlePointsToNextLevel;
   // Reference to the player. If not in game, this is null
   // [HideInInspector] // Should hide in inspector, but may be useful for debugging
   public Player player;
+  public UIController ui;
 
   // Specifies the current game state:
   public GAME_STATE gameState { get; private set; }
+
+  public float maxHealth = 10;
+  public float health = 10;
+
 
   public void changeState(GAME_STATE stateTo)
   {
@@ -34,4 +43,22 @@ public class GameStateManager : Singleton<GameStateManager>
       // TODO (maybe not even needed)
     }
   }
+
+  public void UpdatePoints(int delta) {
+    this.particlePoints += delta;
+    this.ui.pointsSlider.value = Mathf.Clamp(this.particlePoints / this.particlePointsToNextLevel, 0, 1);
+    if (this.particlePoints >= this.particlePointsToNextLevel) {
+      this.particlePoints = 0;
+      this.ui.particleTransformer.TransformParticle();
+    }
+    this.ui.setPointsSliderText(this.particlePoints, this.particlePointsToNextLevel);
+  }
+
+	public void updateHealth(float deltaHealth) {
+		this.health = Mathf.Clamp(this.health + deltaHealth, 0, this.maxHealth);
+    float t = health / maxHealth;
+    this.ui.healthSlider.value = t;
+    this.ui.setHealthSliderText(health, maxHealth);
+	}
+
 }

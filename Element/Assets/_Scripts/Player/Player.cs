@@ -12,6 +12,9 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
   public PlayerCollision playerCollision;
+  public PlayerMovement playerMovement;
+  public PlayerAbilityController playerAbility;
+
   void Awake()
   {
     GameStateManager.Instance.player = this;

@@ -5,11 +5,21 @@ using UnityEngine;
 public class PlayerCollision : MonoBehaviour {
   public CircleCollider2D playerCollider;
 
-  void onTriggerEnter2D(Collider2D other) {
+  void OnTriggerEnter2D(Collider2D other) {
     if (other.tag == "Enemy") {
       // Do enemy collision
-    } else if (other.tag == "Point") {
+      // Nothing for now.
+    } else if (other.tag == "Particle") {
       // Do particle point thing
+      PooledObject particle = other.gameObject.GetComponent<PooledObject>();
+      particle.ReturnToPool();
+      GameStateManager.Instance.UpdatePoints(1);
+   
+    } else if (other.tag == "EnemyBullet") {
+      Bullet bulletScript = other.transform.parent.GetComponent<Bullet>();
+      bulletScript.DestroyBullet();
+      GameStateManager.Instance.updateHealth(-1);
+
     }
   }
 }
