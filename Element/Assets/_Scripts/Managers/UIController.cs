@@ -72,5 +72,6 @@ public class UIController : MonoBehaviour
     GameObject spriteObject = Instantiate(sprite, abilityCooldownSprite.transform);
     spriteObject.transform.position = abilityCooldownSprite.transform.position;
     spriteObject.transform.SetParent(abilityCooldownSprite.transform);
+    this.curAbilitySprite = spriteObject;
   }
 }
