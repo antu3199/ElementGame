@@ -12,8 +12,7 @@ public class PlayerMovement : MonoBehaviour
   public Camera curCamera;
 
   public float maxDistance = 2f;
-
-  public Canvas parentCanvas;
+  public float rotationSpeed = 1;
 
   // Use this for initialization
   void Start()
@@ -49,7 +48,15 @@ public class PlayerMovement : MonoBehaviour
       line.SetPosition(1, curPos);
       line.transform.position = curPos;
 
-      this.transform.position += delta * movementSpeed * Time.deltaTime;
+      this.transform.position += (curPos - pivotPos) * movementSpeed * Time.deltaTime;
+
+
+      // Handle rotation:
+      Vector2 direction = delta.normalized;
+      float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 270;
+      Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+      transform.rotation = rotation; //Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+
     }
     else if (Input.GetMouseButtonUp(0))
     {

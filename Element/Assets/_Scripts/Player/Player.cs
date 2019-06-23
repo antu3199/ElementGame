@@ -12,10 +12,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
   public PlayerCollision playerCollision;
-  public PlayerHealth playerHealth;
   public PlayerMovement playerMovement;
-  public PlayerPoints playerPoints;
-  public PlayerTransformationAnimation playerTransformationAnim;
+  public PlayerAbilityController playerAbility;
 
   void Awake()
   {

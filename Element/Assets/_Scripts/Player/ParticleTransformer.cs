@@ -3,64 +3,85 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum PARTICLE_TYPES
+
+
+public class ParticleTransformer : MonoBehaviour
 {
-  BASE = 0,
-  WATER = 1,
-  CORNSTARCH = 2
-}
-public class ParticleTransformer : MonoBehaviour {
 
-    // TODO: Add prefab for each particle instead...
-	public Image particleTransformInto;
-    public CanvasGroup fadeInGroup;
-	public float fullAlpha;
-	public float transitionSpeed;
-	public float displayTime;
-	private bool isTransforming = false;
+  // TODO: Add prefab for each particle instead...
+  public CanvasGroup fadeInGroup;
+  public float fullAlpha;
+  public float transitionSpeed;
+  public float displayTime;
+  private bool isTransforming = false;
 
-	void Start () {
-		GameStateManager.Instance.particleTransformer = this;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if (Input.GetKeyDown(KeyCode.A)) {
-			this.TransformParticle();
-		}
-	}
+  // Variables for screen info:
+  public RectTransform particleImageContainer;
+  private GameObject curTransformObject;
+  
+  public Text commonNameText;
+  public Text formulaText;
+  public Text descriptionText;
 
-	public void TransformParticle() {
+  void Start()
+  {
+  }
 
-		if (this.isTransforming) return;
+  // Update is called once per frame
+  void Update()
+  {
+    if (Input.GetKeyDown(KeyCode.A))
+    {
+      this.TransformParticle();
+    }
+  }
 
-		PARTICLE_TYPES transformInto = PARTICLE_TYPES.WATER;
-	    
-		// Set particle info here...
-		GameStateManager.Instance.player.playerTransformationAnim.PlayParticleTransformationAnimation();
+  public void TransformParticle()
+  {
 
-		StartCoroutine(this.transformCor());
-	}
+    if (this.isTransforming) return;
 
-	private IEnumerator transformCor() {
-		float t = 0;
-		this.fadeInGroup.gameObject.SetActive(true);
-		this.isTransforming = true;
-		while (t <= 1) {
-			t += transitionSpeed * Time.deltaTime; 
-	    	this.fadeInGroup.alpha = Mathf.Lerp(0, this.fullAlpha, t);
-			yield return null;
-		}
+    PlayerAbilityController abilityController = GameStateManager.Instance.player.playerAbility;
+    // Set particle info here...
+    PlayerAbilityBase info = GameStateManager.Instance.player.playerAbility.TransformParticle(true);
+    GameObject particleImage =  Instantiate(info.canvasVisualsPrefab, this.particleImageContainer.transform);
+    particleImage.transform.SetParent(this.particleImageContainer.transform);
+    this.curTransformObject = particleImage;
 
-		yield return new WaitForSeconds(this.displayTime);
+    this.commonNameText.text = info.commonName;
+    this.formulaText.text = info.chemicalName;
+    this.descriptionText.text = info.description;
+    
+    Debug.Log(info.commonName);
 
-		while (t > 0) {
-			t -= transitionSpeed * Time.deltaTime; 
-	    	this.fadeInGroup.alpha = Mathf.Lerp(0, this.fullAlpha, t);
-			yield return null;
-		}
-		yield return null;
-		this.fadeInGroup.gameObject.SetActive(false);
-		this.isTransforming = false;
-	} 
+    StartCoroutine(this.transformCor());
+  }
+
+  private IEnumerator transformCor()
+  {
+    float t = 0;
+    this.fadeInGroup.gameObject.SetActive(true);
+    this.isTransforming = true;
+    while (t <= 1)
+    {
+      t += transitionSpeed * Time.deltaTime;
+      this.fadeInGroup.alpha = Mathf.Lerp(0, this.fullAlpha, t);
+      yield return null;
+    }
+
+    GameStateManager.Instance.UpdatePoints(0);
+
+    yield return new WaitForSeconds(this.displayTime);
+
+    while (t > 0)
+    {
+      t -= transitionSpeed * Time.deltaTime;
+      this.fadeInGroup.alpha = Mathf.Lerp(0, this.fullAlpha, t);
+      yield return null;
+    }
+    yield return null;
+    Destroy(this.curTransformObject);
+    this.fadeInGroup.gameObject.SetActive(false);
+    this.isTransforming = false;
+  }
 }
