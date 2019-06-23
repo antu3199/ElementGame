@@ -29,7 +29,23 @@ public class GameStateManager : Singleton<GameStateManager>
 
   public float maxHealth = 10;
   public float health = 10;
+   
+  public float score = 0;
+  public float scoreIncreaseSpeed = 10f;
+  
+  void Update() {
+    if (this.gameState == GAME_STATE.GAME) {
+      this.score += this.scoreIncreaseSpeed * Time.deltaTime;
+      this.ui.setScoreText(this.score);
+    }
+  }
+  
 
+  private void resetGame() {
+    this.score = 0;
+    this.health = 10;
+    this.particlePoints = 0;
+  }
 
   public void changeState(GAME_STATE stateTo)
   {
@@ -40,6 +56,9 @@ public class GameStateManager : Singleton<GameStateManager>
     this.gameState = stateTo;
     switch (this.gameState)
     {
+      case GAME_STATE.GAME:
+        this.resetGame();
+      break;
       // TODO (maybe not even needed)
     }
   }
@@ -49,6 +68,8 @@ public class GameStateManager : Singleton<GameStateManager>
     this.ui.pointsSlider.value = Mathf.Clamp(this.particlePoints / this.particlePointsToNextLevel, 0, 1);
     if (this.particlePoints >= this.particlePointsToNextLevel) {
       this.particlePoints = 0;
+      this.score += 100;
+      this.ui.setScoreText(this.score);
       this.ui.particleTransformer.TransformParticle();
     }
     this.ui.setPointsSliderText(this.particlePoints, this.particlePointsToNextLevel);

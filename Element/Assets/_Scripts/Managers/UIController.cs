@@ -12,6 +12,7 @@ public class UIController : MonoBehaviour
 
   public Text healthSliderText;
   public Text pointsSliderText;
+  public Text scoreText;
 
   void Start()
   {
@@ -26,6 +27,11 @@ public class UIController : MonoBehaviour
 
   public void setHealthSliderText(float cur, float max) {
     this.healthSliderText.text = this.formatFract(cur, max);
+  }
+
+  public void setScoreText(float score) {
+     int scoreInt = Mathf.RoundToInt(score);
+     this.scoreText.text = "Score: " + scoreInt;
   }
 
   private string formatFract(float cur, float max) {
