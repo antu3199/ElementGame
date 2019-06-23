@@ -465,6 +465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebe7c7aae07eaa34d931005d328d1de6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abilityCooldownDuration: 7
   visuals: {fileID: 1483378440769462}
   canvasVisualsPrefab: {fileID: 1224056857517892, guid: 9bd301f91c0a0e645a9e5a9ffb9243db,
     type: 2}

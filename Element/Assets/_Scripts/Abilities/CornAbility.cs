@@ -15,6 +15,8 @@ public class CornAbility : PlayerAbilityBase
       return "Description: Used for cooking.\n\n Gameplay: Tap to throw a furry of corn!";
     }
   }
+
+  public override bool useableAbility { get { return true; } }
   public override void useAbility()
   {
     // DO something

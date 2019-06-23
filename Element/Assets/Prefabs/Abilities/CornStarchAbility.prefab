@@ -180,6 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22f2b867ed26c2f4fb1798ab48390605, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abilityCooldownDuration: 5
   visuals: {fileID: 1960484854341966}
   canvasVisualsPrefab: {fileID: 1401074646273462, guid: a9b7e542414dda340a6dd92af9c456c0,
     type: 2}
