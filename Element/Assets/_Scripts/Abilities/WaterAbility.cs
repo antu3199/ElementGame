@@ -9,8 +9,18 @@ public class WaterAbility : PlayerAbilityBase {
   public override string description { get { 
     return "Description: About 71 percent of the Earth's surface is Water! You also drink it.\n\n Gameplay: Tap the screen with two fingers to recover health (on a cooldown)";
   }}
+
+  public ParticleSystem healEffect;
+  public float healEffectDuration;
 	public float healAmount;
 	public override void useAbility() {
 		GameStateManager.Instance.updateHealth(healAmount);
+    StartCoroutine(this.healEffectCoroutine());
 	}
+
+  IEnumerator healEffectCoroutine() {
+    this.healEffect.Play();
+    yield return new WaitForSeconds(this.healEffectDuration);
+    this.healEffect.Stop();
+  }
 }
