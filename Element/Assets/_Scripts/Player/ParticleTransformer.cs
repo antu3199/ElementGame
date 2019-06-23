@@ -43,7 +43,7 @@ public class ParticleTransformer : MonoBehaviour
 
     PlayerAbilityController abilityController = GameStateManager.Instance.player.playerAbility;
     // Set particle info here...
-    PlayerAbilityBase info = GameStateManager.Instance.player.playerAbility.TransformParticle();
+    PlayerAbilityBase info = GameStateManager.Instance.player.playerAbility.TransformParticle(true);
     GameObject particleImage =  Instantiate(info.canvasVisualsPrefab, this.particleImageContainer.transform);
     particleImage.transform.SetParent(this.particleImageContainer.transform);
     this.curTransformObject = particleImage;
