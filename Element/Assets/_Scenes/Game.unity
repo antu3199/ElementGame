@@ -5691,7 +5691,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -0.000061035156, y: 558}
+  m_AnchoredPosition: {x: 0, y: 558}
   m_SizeDelta: {x: -281.9589, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &616255208
@@ -5831,6 +5831,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canCollide: 1
   playerCollider: {fileID: 627142199}
+  hasArmor: 0
 --- !u!58 &627142199
 CircleCollider2D:
   m_ObjectHideFlags: 0
