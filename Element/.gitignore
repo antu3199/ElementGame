@@ -58,6 +58,8 @@ sysinfo.txt
 *.apk
 *.unitypackage
 
+/Assets/StreamingAssets*
+
 # Crashlytics generated file
 crashlytics-build.properties
-Assets/StreamingAssets/build_info.txt
+
