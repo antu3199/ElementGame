@@ -6,7 +6,8 @@ public enum PARTICLE_TYPES
 {
   BASE = 0,
   WATER = 1,
-  CORNSTARCH = 2
+  CORNSTARCH = 2,
+  ALCOHOL = 3
 }
 public abstract class PlayerAbilityBase : MonoBehaviour
 {
