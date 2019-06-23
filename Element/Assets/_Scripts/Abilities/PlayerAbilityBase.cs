@@ -16,13 +16,20 @@ public abstract class PlayerAbilityBase : MonoBehaviour
   public abstract string description { get; }
   public GameObject visuals;
   public GameObject canvasVisualsPrefab;
+  public bool abilityAvailable = true;
 
   void Update()
   {
-    if (Input.GetKeyDown(KeyCode.Space))
+    if (Input.GetKeyDown(KeyCode.Space) && this.abilityAvailable)
     {
       this.useAbility();
     }
   }
   public virtual void useAbility() { }
+  public virtual void setAbilityActive(bool val) {
+    this.abilityAvailable = val;
+    if (val == false) {
+      this.visuals.SetActive(false);
+    }
+  }
 }

@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour {
+
+  public bool canCollide = true;
   public CircleCollider2D playerCollider;
 
   void OnTriggerEnter2D(Collider2D other) {
+    if (!canCollide) return;
+
     if (other.tag == "Enemy") {
       // Do enemy collision
       // Nothing for now.

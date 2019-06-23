@@ -9,7 +9,7 @@ public class PlayerAbilityController : MonoBehaviour {
 	public PlayerAbilityBase ability;
 	public ParticleSystem particleS;
 	
-    public float animationDuration = 1.0f;
+  public float animationDuration = 1.0f;
 	public float timeBeforeChange = 1f;
 
 	void Start() {
@@ -50,4 +50,10 @@ public class PlayerAbilityController : MonoBehaviour {
 		newAbility.transform.SetParent(this.transform);
 		this.ability = newAbility;
 	}
+
+  public void SetAbilityActive(bool val) {
+    if (this.ability) {
+      this.ability.setAbilityActive(val);
+    }
+  }
 }
