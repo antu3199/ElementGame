@@ -113,6 +113,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxObjects: 0
   bulletTransform: {fileID: 4469491473853844}
+  speed: 0
+  angle: 0
 --- !u!114 &114249882989849854
 MonoBehaviour:
   m_ObjectHideFlags: 1

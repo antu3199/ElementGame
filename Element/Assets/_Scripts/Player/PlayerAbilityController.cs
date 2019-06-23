@@ -60,6 +60,7 @@ public class PlayerAbilityController : MonoBehaviour
     newAbility.transform.SetParent(this.transform);
     this.ability = newAbility;
     GameStateManager.Instance.ui.setAbilityAvailable(newAbility.useableAbility);
+    GameStateManager.Instance.ui.setAbilityCooldownIcon(newAbility.cooldownVisualsPrefab);
   }
 
   public void SetAbilityActive(bool val)

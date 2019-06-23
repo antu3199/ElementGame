@@ -469,6 +469,8 @@ MonoBehaviour:
   visuals: {fileID: 1483378440769462}
   canvasVisualsPrefab: {fileID: 1224056857517892, guid: 9bd301f91c0a0e645a9e5a9ffb9243db,
     type: 2}
+  cooldownVisualsPrefab: {fileID: 1643300779500020, guid: 2717de652442de644ae60b272326cb62,
+    type: 2}
   abilityAvailable: 1
   healEffect: {fileID: 198065029869071080}
   healEffectDuration: 1

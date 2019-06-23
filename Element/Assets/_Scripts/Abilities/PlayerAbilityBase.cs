@@ -18,12 +18,11 @@ public abstract class PlayerAbilityBase : MonoBehaviour
   public float abilityCooldownDuration;
   public GameObject visuals;
   public GameObject canvasVisualsPrefab;
+  public GameObject cooldownVisualsPrefab;
+  
   public bool abilityAvailable = true;
   public float curCooldown { get; set; }
 
-  void Start() {
-    GameStateManager.Instance.ui.setAbilityAvailable(this.useableAbility);
-  }
   void Update()
   {
     if (this.abilityAvailable)

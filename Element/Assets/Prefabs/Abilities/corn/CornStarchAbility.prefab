@@ -184,6 +184,8 @@ MonoBehaviour:
   visuals: {fileID: 1960484854341966}
   canvasVisualsPrefab: {fileID: 1401074646273462, guid: a9b7e542414dda340a6dd92af9c456c0,
     type: 2}
+  cooldownVisualsPrefab: {fileID: 1500632295854636, guid: bc6d221783f6b8840b71845ece87a1e1,
+    type: 2}
   abilityAvailable: 1
   bulletShooter: {fileID: 114518273603664806}
 --- !u!212 &212986670765400164

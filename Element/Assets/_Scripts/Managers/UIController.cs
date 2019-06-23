@@ -16,6 +16,8 @@ public class UIController : MonoBehaviour
 
   public RectTransform abilityCooldown;
   public RectTransform abilityIndicator;
+  public RectTransform abilityCooldownSprite;
+  private GameObject curAbilitySprite;
 
   void Awake() {
     GameStateManager.Instance.ui = this;
@@ -60,5 +62,15 @@ public class UIController : MonoBehaviour
 
   public void setAbilityAvailable(bool available) {
     this.abilityIndicator.gameObject.SetActive(available);
+  }
+
+  public void setAbilityCooldownIcon(GameObject sprite) {
+    if (this.curAbilitySprite != null) {
+      Destroy(this.curAbilitySprite);
+    }
+
+    GameObject spriteObject = Instantiate(sprite, abilityCooldownSprite.transform);
+    spriteObject.transform.position = abilityCooldownSprite.transform.position;
+    spriteObject.transform.SetParent(abilityCooldownSprite.transform);
   }
 }
