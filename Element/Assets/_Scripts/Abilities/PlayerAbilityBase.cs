@@ -6,7 +6,8 @@ public enum PARTICLE_TYPES
 {
   BASE = 0,
   WATER = 1,
-  CORNSTARCH = 2
+  CORNSTARCH = 2,
+  NICKEL = 3
 }
 public abstract class PlayerAbilityBase : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public abstract class PlayerAbilityBase : MonoBehaviour
   public bool abilityAvailable = true;
   public float curCooldown { get; set; }
 
-  void Update()
+  public void Update()
   {
     if (this.abilityAvailable)
     {
