@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4826633971092736}
   - component: {fileID: 114998422421566454}
   - component: {fileID: 114481499023741108}
+  - component: {fileID: 114138846658294698}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -41,6 +42,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114138846658294698
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1857671006216874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12dbaf492cf3dd24ea51dc9bc67beb13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityPrefabs:
+  - {fileID: 114234200773196702, guid: 6a9bb83ba642db84aa177439698e1920, type: 2}
 --- !u!114 &114481499023741108
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -64,5 +78,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particlePoints: 0
+  particlePointsToNextLevel: 3
   player: {fileID: 0}
-  gameState: 0
+  ui: {fileID: 0}
