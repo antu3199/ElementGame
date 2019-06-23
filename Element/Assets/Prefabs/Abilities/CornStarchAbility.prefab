@@ -43,6 +43,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1815306807020588
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4755510940792492}
+  - component: {fileID: 114518273603664806}
+  m_Layer: 0
+  m_Name: CornShooter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1960484854341966
 GameObject:
   m_ObjectHideFlags: 0
@@ -72,6 +88,19 @@ Transform:
   m_Father: {fileID: 4803413970201468}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4755510940792492
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1815306807020588}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4803413970201468}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4789883424711806
 Transform:
   m_ObjectHideFlags: 1
@@ -96,9 +125,50 @@ Transform:
   m_LocalScale: {x: 0.6810645, y: 0.6810645, z: 0.6810645}
   m_Children:
   - {fileID: 4090325862028446}
+  - {fileID: 4755510940792492}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114518273603664806
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1815306807020588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd1f6749e92134040a122b09609ea70c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 114215437023015680, guid: c6b85638d6be23940a4e2e41a5e39bed,
+    type: 2}
+  bulletNum: 10
+  bulletSpeed: 2
+  accelerationSpeed: 0
+  useMaxSpeed: 0
+  maxSpeed: 0
+  useMinSpeed: 0
+  minSpeed: 0
+  accelerationTurn: 0
+  usePauseAndResume: 0
+  pauseTime: 0
+  resumeTime: 0
+  useDestroyAfterTime: 1
+  destroyAfterTime: 5
+  inheritAngle: 0
+  shotFiredCallback:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  shotFinishedCallback:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  numBullets: 16
+  deltaAngle: 22.5
+  initialAngle: 0
 --- !u!114 &114821495233304532
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -113,6 +183,8 @@ MonoBehaviour:
   visuals: {fileID: 1960484854341966}
   canvasVisualsPrefab: {fileID: 1401074646273462, guid: a9b7e542414dda340a6dd92af9c456c0,
     type: 2}
+  abilityAvailable: 1
+  bulletShooter: {fileID: 114518273603664806}
 --- !u!212 &212986670765400164
 SpriteRenderer:
   m_ObjectHideFlags: 1

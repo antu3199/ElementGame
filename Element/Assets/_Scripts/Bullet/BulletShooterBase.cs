@@ -103,6 +103,8 @@ public abstract class BulletShooterBase : MonoBehaviour
     {
       return;
     }
+
+
     bullet.Shot(this,
                 speed, angle, accelerationSpeed, accelerationTurn,
                 homing, homingTarget, homingAngleSpeed,
