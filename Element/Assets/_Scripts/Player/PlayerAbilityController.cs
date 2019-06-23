@@ -46,8 +46,7 @@ public class PlayerAbilityController : MonoBehaviour {
 		  Destroy(this.ability.gameObject);
 		}
 		
-		PlayerAbilityBase newAbility = Instantiate<PlayerAbilityBase>(ability);
-		newAbility.transform.position = this.transform.position;
+		PlayerAbilityBase newAbility = Instantiate<PlayerAbilityBase>(ability, this.transform);
 		newAbility.transform.SetParent(this.transform);
 		this.ability = newAbility;
 	}
