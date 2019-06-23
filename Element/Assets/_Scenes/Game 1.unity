@@ -682,10 +682,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCollision: {fileID: 627142198}
-  playerHealth: {fileID: 627142201}
   playerMovement: {fileID: 627142202}
-  playerPoints: {fileID: 627142204}
-  playerTransformationAnim: {fileID: 0}
+  playerAbility: {fileID: 0}
 --- !u!114 &627142201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -714,7 +712,7 @@ MonoBehaviour:
   line: {fileID: 1601375944}
   curCamera: {fileID: 519420031}
   maxDistance: 2
-  parentCanvas: {fileID: 653519156}
+  rotationSpeed: 1
 --- !u!50 &627142203
 Rigidbody2D:
   serializedVersion: 4
@@ -1627,7 +1625,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7678a6d69ba4c4005bac9258ee5e4549, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.1
+  speed: 1
 --- !u!4 &1240933974 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4801546406933496, guid: 1f06f8a807231c94788f1a084f94b38c,
