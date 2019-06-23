@@ -14,21 +14,36 @@ public abstract class PlayerAbilityBase : MonoBehaviour
   public abstract string commonName { get; }
   public abstract string chemicalName { get; }
   public abstract string description { get; }
+  public abstract bool useableAbility { get; }
+  public float abilityCooldownDuration;
   public GameObject visuals;
   public GameObject canvasVisualsPrefab;
+  public GameObject cooldownVisualsPrefab;
+  
   public bool abilityAvailable = true;
+  public float curCooldown { get; set; }
 
   void Update()
   {
-    if (Input.GetKeyDown(KeyCode.Space) && this.abilityAvailable)
+    if (this.abilityAvailable)
     {
-      this.useAbility();
+
+      this.curCooldown = Mathf.Clamp(this.curCooldown - Time.deltaTime, 0, this.abilityCooldownDuration);
+      GameStateManager.Instance.ui.setAbilityCooldown(this.curCooldown, this.abilityCooldownDuration);
+
+      if ((Input.touchCount == 2 || Input.GetKeyDown(KeyCode.Space)) && this.useableAbility && this.curCooldown <= 0)
+      {
+        this.useAbility();
+        this.curCooldown = this.abilityCooldownDuration;
+      }
     }
   }
   public virtual void useAbility() { }
-  public virtual void setAbilityActive(bool val) {
+  public virtual void setAbilityActive(bool val)
+  {
     this.abilityAvailable = val;
-    if (val == false) {
+    if (val == false)
+    {
       this.visuals.SetActive(false);
     }
   }

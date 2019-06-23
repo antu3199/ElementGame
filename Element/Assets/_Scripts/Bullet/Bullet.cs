@@ -9,9 +9,9 @@ public class Bullet : PooledObject
   private BulletShooterBase parentBaseShot;
 
   // Speed at velocity
-  private float speed;
+  public float speed;
   // Angle at which going at
-  private float angle;
+  public float angle;
   // Acceleration
   private float accelSpeed;
   // Acceleration turning
@@ -104,6 +104,7 @@ public class Bullet : PooledObject
   {
     if (isShooting)
     {
+      Debug.Log("Cancled due to shooting");
       return;
     }
     isShooting = true;
@@ -242,9 +243,9 @@ public class Bullet : PooledObject
 
 
   public void DestroyBullet() {
-    this.baseAngle = 0f;
-    this.bulletTransform.rotation = Quaternion.Euler(bulletTransform.rotation.x, bulletTransform.rotation.y, baseAngle + angle);
-
+    //this.baseAngle = 0f;
+    //this.bulletTransform.rotation = Quaternion.Euler(bulletTransform.rotation.x, bulletTransform.rotation.y, baseAngle + angle);
+    this.isShooting = false;
     this.frameCount = 0f;
     this.timeCount = 0f;
     base.ReturnToPool();

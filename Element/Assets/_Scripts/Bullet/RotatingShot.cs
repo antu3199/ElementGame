@@ -6,8 +6,13 @@ using UnityEngine.Serialization;
 public class RotatingShot : BulletShooterBase
 {
   [Header("===== RotatingShot Settings =====")]
+  
+  public int numBullets = 60;
+  public float deltaAngle = 5;
+  public float initialAngle = 12;
 
   float prevAngle;
+
 
   public override void Shot()
   {
@@ -27,17 +32,20 @@ public class RotatingShot : BulletShooterBase
     }
     base.isShooting = true;
 
-    for (int i = 0; i < 60; i++) {
+
+    for (int i = 0; i < this.numBullets; i++) {
         var bullet = GetBullet(transform.position);
+        bullet.transform.position = this.transform.position;
+        bullet.transform.rotation = this.transform.rotation;
         if (bullet == null) {
             break;
         }
-        ShotBullet(bullet, bulletSpeed/2, prevAngle);
-        this.prevAngle += 5;
+        ShotBullet(bullet, this.bulletSpeed/2, prevAngle);
+        this.prevAngle += this.deltaAngle;
     }
-
     FiredShot();
     FinishedShot();
-    this.prevAngle += 12;
+    this.prevAngle += this.initialAngle;
+    this.prevAngle = this.prevAngle % 360;
   }
 }
