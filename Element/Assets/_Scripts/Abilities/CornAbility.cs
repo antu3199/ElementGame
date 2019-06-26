@@ -6,7 +6,7 @@ public class CornAbility : PlayerAbilityBase
 {
   public override PARTICLE_TYPES type { get { return PARTICLE_TYPES.CORNSTARCH; } }
   public override string commonName { get { return "Corn starch"; } }
-  public override string chemicalName { get { return "SO4(NH4)2"; } }
+  public override string chemicalName { get { return "((C)6(H)9(O)5)n"; } }
   public RotatingShot bulletShooter;
   public override string description
   {

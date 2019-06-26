@@ -26,7 +26,18 @@ public class GoldAbility : PlayerAbilityBase
         GameStateManager.Instance.player.playerCollision.hasArmor = true;
         armor = 3;
         sprite.color = new Color32(218, 165, 32, 255);
-        print("Armor activated");
+    }
+
+    void OnDestroy()
+    {
+        if (!GameStateManager.Instance || !GameStateManager.Instance.player || !GameStateManager.Instance.player.playerCollision) return;
+
+        if (GameStateManager.Instance.player.playerCollision.hasArmor)
+        {
+            GameStateManager.Instance.player.playerCollision.hasArmor = false;
+        }
+
+        sprite.color = new Color32(255, 215, 0, 255);
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -38,9 +49,7 @@ public class GoldAbility : PlayerAbilityBase
         if (other.tag == "EnemyBullet")
         {
             armor = System.Math.Max(0, armor - 1);
-            print("Armor Value: " + armor);
-
-            if(armor == 0)
+            if (armor == 0)
             {
                 GameStateManager.Instance.player.playerCollision.hasArmor = false;
                 sprite.color = new Color32(255, 215, 0, 255);
