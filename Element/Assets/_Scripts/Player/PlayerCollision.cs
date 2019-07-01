@@ -19,13 +19,13 @@ public class PlayerCollision : MonoBehaviour {
       // Do particle point thing
       PooledObject particle = other.gameObject.GetComponent<PooledObject>();
       particle.ReturnToPool();
-      GameStateManager.Instance.UpdatePoints(1);
+      GameStateManager.Instance.game.UpdatePoints(1);
    
     } else if (other.tag == "EnemyBullet") {
       Bullet bulletScript = other.transform.parent.GetComponent<Bullet>();
       bulletScript.DestroyBullet();
        
-      if(!hasArmor) GameStateManager.Instance.updateHealth(-1);
+      if(!hasArmor) GameStateManager.Instance.game.updateHealth(-1);
 
     }
   }

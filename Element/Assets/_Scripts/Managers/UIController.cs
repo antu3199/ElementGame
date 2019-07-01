@@ -19,14 +19,11 @@ public class UIController : MonoBehaviour
   public RectTransform abilityCooldownSprite;
   private GameObject curAbilitySprite;
 
-  void Awake() {
-    GameStateManager.Instance.ui = this;
-  }
 
   void Start()
   {
-    GameStateManager.Instance.UpdatePoints(0);
-    GameStateManager.Instance.updateHealth(0);
+    GameStateManager.Instance.game.UpdatePoints(0);
+    GameStateManager.Instance.game.updateHealth(0);
   }
 
   public void setPointsSliderText(float cur, float max)

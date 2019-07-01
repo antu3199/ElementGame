@@ -165,7 +165,7 @@ public class Bullet : PooledObject
     // auto release check
     if (this.useDestroyAfterTime && this.destroyAfterTime > 0f)
     {
-      if (this.timeCount >= this.destroyAfterTime && Vector3.Distance(this.transform.position, GameStateManager.Instance.player.transform.position) >= 6f)
+      if (this.timeCount >= this.destroyAfterTime && Vector3.Distance(this.transform.position, GameStateManager.Instance.game.player.transform.position) >= 6f)
       {
         // Release
         this.DestroyBullet();

@@ -41,9 +41,9 @@ public class ParticleTransformer : MonoBehaviour
 
     if (this.isTransforming) return;
 
-    PlayerAbilityController abilityController = GameStateManager.Instance.player.playerAbility;
+    PlayerAbilityController abilityController = GameStateManager.Instance.game.player.playerAbility;
     // Set particle info here...
-    PlayerAbilityBase info = GameStateManager.Instance.player.playerAbility.TransformParticle(true);
+    PlayerAbilityBase info = GameStateManager.Instance.game.player.playerAbility.TransformParticle(true);
     GameObject particleImage =  Instantiate(info.canvasVisualsPrefab, this.particleImageContainer.transform);
     particleImage.transform.SetParent(this.particleImageContainer.transform);
     this.curTransformObject = particleImage;
@@ -69,7 +69,7 @@ public class ParticleTransformer : MonoBehaviour
       yield return null;
     }
 
-    GameStateManager.Instance.UpdatePoints(0);
+    GameStateManager.Instance.game.UpdatePoints(0);
 
     yield return new WaitForSeconds(this.displayTime);
 

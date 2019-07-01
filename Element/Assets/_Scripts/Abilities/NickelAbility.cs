@@ -18,7 +18,7 @@ public class NickelAbility : PlayerAbilityBase {
     base.Update();
     curTime += Time.deltaTime;
     if (curTime >= 1) {
-      GameStateManager.Instance.score+= 5;
+      GameStateManager.Instance.game.score+= 5;
       curTime = 0;
     }
     

@@ -32,7 +32,7 @@ public abstract class PlayerAbilityBase : MonoBehaviour
     {
 
       this.curCooldown = Mathf.Clamp(this.curCooldown - Time.deltaTime, 0, this.abilityCooldownDuration);
-      GameStateManager.Instance.ui.setAbilityCooldown(this.curCooldown, this.abilityCooldownDuration);
+      GameStateManager.Instance.game.ui.setAbilityCooldown(this.curCooldown, this.abilityCooldownDuration);
 
       if ((Input.touchCount == 2 || Input.GetKeyDown(KeyCode.Space)) && this.useableAbility && this.curCooldown <= 0)
       {

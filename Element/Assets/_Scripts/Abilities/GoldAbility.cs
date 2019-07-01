@@ -23,18 +23,18 @@ public class GoldAbility : PlayerAbilityBase
 
     public override void useAbility()
     {
-        GameStateManager.Instance.player.playerCollision.hasArmor = true;
+        GameStateManager.Instance.game.player.playerCollision.hasArmor = true;
         armor = 3;
         sprite.color = new Color32(218, 165, 32, 255);
     }
 
     void OnDestroy()
     {
-        if (!GameStateManager.Instance || !GameStateManager.Instance.player || !GameStateManager.Instance.player.playerCollision) return;
+        if (!GameStateManager.Instance || !GameStateManager.Instance.game.player || !GameStateManager.Instance.game.player.playerCollision) return;
 
-        if (GameStateManager.Instance.player.playerCollision.hasArmor)
+        if (GameStateManager.Instance.game.player.playerCollision.hasArmor)
         {
-            GameStateManager.Instance.player.playerCollision.hasArmor = false;
+            GameStateManager.Instance.game.player.playerCollision.hasArmor = false;
         }
 
         sprite.color = new Color32(255, 215, 0, 255);
@@ -42,7 +42,7 @@ public class GoldAbility : PlayerAbilityBase
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (!GameStateManager.Instance.player.playerCollision.canCollide) return;
+        if (!GameStateManager.Instance.game.player.playerCollision.canCollide) return;
 
         print(other.tag);
 
@@ -51,7 +51,7 @@ public class GoldAbility : PlayerAbilityBase
             armor = System.Math.Max(0, armor - 1);
             if (armor == 0)
             {
-                GameStateManager.Instance.player.playerCollision.hasArmor = false;
+                GameStateManager.Instance.game.player.playerCollision.hasArmor = false;
                 sprite.color = new Color32(255, 215, 0, 255);
             }
         }

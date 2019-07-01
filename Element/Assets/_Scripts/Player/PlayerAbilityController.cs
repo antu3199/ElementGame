@@ -59,8 +59,8 @@ public class PlayerAbilityController : MonoBehaviour
     PlayerAbilityBase newAbility = Instantiate<PlayerAbilityBase>(ability, this.transform);
     newAbility.transform.SetParent(this.transform);
     this.ability = newAbility;
-    GameStateManager.Instance.ui.setAbilityAvailable(newAbility.useableAbility);
-    GameStateManager.Instance.ui.setAbilityCooldownIcon(newAbility.cooldownVisualsPrefab);
+    GameStateManager.Instance.game.ui.setAbilityAvailable(newAbility.useableAbility);
+    GameStateManager.Instance.game.ui.setAbilityCooldownIcon(newAbility.cooldownVisualsPrefab);
   }
 
   public void SetAbilityActive(bool val)

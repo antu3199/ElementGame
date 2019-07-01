@@ -16,7 +16,7 @@ public class WaterAbility : PlayerAbilityBase {
   public float healEffectDuration;
 	public float healAmount;
 	public override void useAbility() {
-		GameStateManager.Instance.updateHealth(healAmount);
+		GameStateManager.Instance.game.updateHealth(healAmount);
     StartCoroutine(this.healEffectCoroutine());
 	}
 

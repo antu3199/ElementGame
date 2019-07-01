@@ -19,12 +19,6 @@ public class Player : MonoBehaviour
 
   public ParticleSystem deathParticles;
 
-
-  void Awake()
-  {
-    GameStateManager.Instance.player = this;
-  }
-
   void Update()
   {
     if (this.canMove) {
@@ -36,13 +30,6 @@ public class Player : MonoBehaviour
     }
   }
 
-  void OnDestroy()
-  {
-    if (GameStateManager.Instance != null)
-    {
-      GameStateManager.Instance.player = null;
-    }
-  }
 
   public void setCanMove(bool move) {
     this.playerCollision.canCollide = move;
