@@ -23,19 +23,6 @@ public class ParticleTransformer : MonoBehaviour
   public Text formulaText;
   public Text descriptionText;
 
-  void Start()
-  {
-  }
-
-  // Update is called once per frame
-  void Update()
-  {
-    if (Input.GetKeyDown(KeyCode.A))
-    {
-      this.TransformParticle();
-    }
-  }
-
   public void TransformParticle()
   {
 

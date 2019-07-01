@@ -16,7 +16,8 @@ public class GameStateManager : Singleton<GameStateManager>
 {
   // Specifies the current game state:
   public GAME_STATE gameState { get; private set; }
-  public GameController game;
+  public GameController game {get; set;}
+
   void Update() {
     switch (this.gameState) {
       case GAME_STATE.GAME:

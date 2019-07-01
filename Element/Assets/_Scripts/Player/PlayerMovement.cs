@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
   }
 
   // Update is called once per frame
-  public void PlayerUpdate()
+  public void DoUpdate()
   {
     if (Input.GetMouseButtonDown(0))
     {
@@ -49,7 +49,6 @@ public class PlayerMovement : MonoBehaviour
       line.transform.position = curPos;
 
       this.transform.position += (curPos - pivotPos) * movementSpeed * Time.deltaTime;
-
 
       // Handle rotation:
       Vector2 direction = delta.normalized;

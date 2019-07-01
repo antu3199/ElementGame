@@ -9,7 +9,7 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerCollision))
 //,(typeof(AnyOtherClass))
 ]
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, ExplicitInterface
 {
   public PlayerCollision playerCollision;
   public PlayerMovement playerMovement;
@@ -19,17 +19,16 @@ public class Player : MonoBehaviour
 
   public ParticleSystem deathParticles;
 
-  void Update()
+  public void DoUpdate()
   {
     if (this.canMove) {
-      this.playerMovement.PlayerUpdate();
+      this.playerMovement.DoUpdate();
     }
 
     if (Input.GetKeyDown(KeyCode.Q)) {
       this.setCanMove(false);
     }
   }
-
 
   public void setCanMove(bool move) {
     this.playerCollision.canCollide = move;

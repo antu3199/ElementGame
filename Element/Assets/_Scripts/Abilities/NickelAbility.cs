@@ -14,14 +14,12 @@ public class NickelAbility : PlayerAbilityBase {
   
   float curTime = 0;
   // Update is called once per frame
-  public void Update () {
+  public new void Update () {
     base.Update();
     curTime += Time.deltaTime;
     if (curTime >= 1) {
       GameStateManager.Instance.game.score+= 5;
       curTime = 0;
     }
-    
-    
   }
 }

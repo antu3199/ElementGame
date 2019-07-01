@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ParticleSpawn : MonoBehaviour {
+public class ParticleSpawn : MonoBehaviour, ExplicitInterface {
   
   public Transform player;
 	public PooledObject particle;
@@ -11,7 +11,7 @@ public class ParticleSpawn : MonoBehaviour {
 	public float spawnRate = 2f;
 	float nextSpawn = 0.0f;
 
-	void Update () {
+	public void DoUpdate () {
 		if (Time.time > nextSpawn){
 			nextSpawn = Time.time + spawnRate;
 			randX = Random.Range(-9.0f,9.0f);

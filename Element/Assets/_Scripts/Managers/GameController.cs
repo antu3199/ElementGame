@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameController : MonoBehaviour
+public class GameController : MonoBehaviour, ExplicitInterface
 {
-
+    
+	// References to other classes
     public Player player;
     public UIController ui;
+	public CameraFollow cameraMover;
+	public BackgroundLayerSpawner backgroundHandler;
+	public ParticleSpawn particleSpawner;
+
+    // Score & stuff
     public float particlePoints = 0;
     public float particlePointsToNextLevel = 3;
     public float maxHealth = 10;
@@ -19,15 +25,26 @@ public class GameController : MonoBehaviour
 	// Other stuff
     public float timeBeforeGoBackToMainMenu = 5f;
 
+	private List<ExplicitInterface> observers = new List<ExplicitInterface>();
+
     void Awake()
     {
         GameStateManager.Instance.game = this;
+		observers.Add(this.player);
+		observers.Add(this.ui);
+		observers.Add(cameraMover);
+		observers.Add(backgroundHandler);
+		observers.Add(particleSpawner);
     }
 
     public void DoUpdate()
     {
         this.score += this.scoreIncreaseSpeed * Time.deltaTime;
         this.ui.setScoreText(this.score);
+
+		foreach (var observer in this.observers) {
+          observer.DoUpdate();
+		}
     }
 
     private void resetGame()
@@ -67,7 +84,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    IEnumerator GoToMainMenuAfterTime(float time)
+    private IEnumerator GoToMainMenuAfterTime(float time)
     {
         yield return new WaitForSeconds(time);
         this.GoBackToMainMenu();

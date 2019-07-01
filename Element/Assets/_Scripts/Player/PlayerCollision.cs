@@ -8,7 +8,7 @@ public class PlayerCollision : MonoBehaviour {
   public CircleCollider2D playerCollider;
 
   public bool hasArmor = false;
-
+  
   void OnTriggerEnter2D(Collider2D other) {
     if (!canCollide) return;
 

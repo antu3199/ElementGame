@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIController : MonoBehaviour
+public class UIController : MonoBehaviour, ExplicitInterface
 {
 
   public ParticleTransformer particleTransformer;
@@ -25,6 +25,8 @@ public class UIController : MonoBehaviour
     GameStateManager.Instance.game.UpdatePoints(0);
     GameStateManager.Instance.game.updateHealth(0);
   }
+
+  public void DoUpdate() {}
 
   public void setPointsSliderText(float cur, float max)
   {
