@@ -81,12 +81,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9703a396992fe8c4eaabce36a7f77fe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particlePoints: 0
-  particlePointsToNextLevel: 3
-  player: {fileID: 0}
-  ui: {fileID: 0}
-  maxHealth: 10
-  health: 10
-  score: 0
-  scoreIncreaseSpeed: 10
-  timeBeforeGoBackToMainMenu: 2

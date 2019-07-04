@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Handles player collision using Unity's "Trigger" system.
 public class PlayerCollision : MonoBehaviour {
 
   public bool canCollide = true;
@@ -11,22 +12,21 @@ public class PlayerCollision : MonoBehaviour {
   
   void OnTriggerEnter2D(Collider2D other) {
     if (!canCollide) return;
-
+     
+    // Enemy collision
     if (other.tag == "Enemy") {
-      // Do enemy collision
-      // Nothing for now.
+
     } else if (other.tag == "Particle") {
-      // Do particle point thing
+      // Add points
       PooledObject particle = other.gameObject.GetComponent<PooledObject>();
       particle.ReturnToPool();
       GameStateManager.Instance.game.UpdatePoints(1);
    
     } else if (other.tag == "EnemyBullet") {
+      // Lower health
       Bullet bulletScript = other.transform.parent.GetComponent<Bullet>();
       bulletScript.DestroyBullet();
-       
       if(!hasArmor) GameStateManager.Instance.game.updateHealth(-1);
-
     }
   }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// Controller for instructions.
 public class InstructionsController : MonoBehaviour {
   
   public int curSlide = 0;

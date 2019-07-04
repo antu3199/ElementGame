@@ -8,7 +8,6 @@ using UnityEngine.UI;
 
 
 // Controller used for shooting bullets
-// Reference: https://assetstore.unity.com/packages/tools/integration/uni-bullet-hell-19088
 public sealed class BulletController : MonoBehaviour
 {
   public int shotIndex = 0;
@@ -17,7 +16,7 @@ public sealed class BulletController : MonoBehaviour
   public List<BulletShooterBase> shotObjs;
 
   // "Set a delay time to starting next shot pattern"
-  public float afterDelay;
+  public float afterDelay = 1f;
 
   private bool isShooting;
 
@@ -35,9 +34,7 @@ public sealed class BulletController : MonoBehaviour
     this.isShooting = false;
   }
 
-  /// <summary>
   /// Start the shot routine.
-  /// </summary>
   public void StartShotRoutine()
   {
     if (this.isShooting)

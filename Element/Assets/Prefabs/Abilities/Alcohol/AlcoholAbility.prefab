@@ -448,7 +448,7 @@ MonoBehaviour:
   abilityAvailable: 1
   circleObject: {fileID: 4404642098768732}
   increaseAmount: 0.3
-  timeDuration: 0.5
+  timeDuration: 0.3
 --- !u!114 &114691980167535388
 MonoBehaviour:
   m_ObjectHideFlags: 1

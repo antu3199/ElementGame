@@ -5,17 +5,17 @@ using UnityEngine.UI;
 
 
 
+// Class that handles the "Animation" that appears when you get enough particles
 public class ParticleTransformer : MonoBehaviour
 {
-
-  // TODO: Add prefab for each particle instead...
-  public CanvasGroup fadeInGroup;
-  public float fullAlpha;
-  public float transitionSpeed;
-  public float displayTime;
+  // Variables for tweeking
+  public float fullAlpha = 0.45f;
+  public float transitionSpeed = 1f;
+  public float displayTime = 5f;
   public bool isTransforming{get; private set;}
 
   // Variables for screen info:
+  public CanvasGroup fadeInGroup;
   public RectTransform particleImageContainer;
   private GameObject curTransformObject;
   
@@ -29,7 +29,7 @@ public class ParticleTransformer : MonoBehaviour
     if (this.isTransforming) return;
 
     PlayerAbilityController abilityController = GameStateManager.Instance.game.player.playerAbility;
-    // Set particle info here...
+    // Transform the particle, and extract the image information to the particleImageContainer
     PlayerAbilityBase info = GameStateManager.Instance.game.player.playerAbility.TransformParticle(true);
     GameObject particleImage =  Instantiate(info.canvasVisualsPrefab, this.particleImageContainer.transform);
     particleImage.transform.SetParent(this.particleImageContainer.transform);
@@ -39,11 +39,12 @@ public class ParticleTransformer : MonoBehaviour
     this.formulaText.text = info.chemicalName;
     this.descriptionText.text = info.description;
     
-    Debug.Log(info.commonName);
-
+    // Animation effect
     StartCoroutine(this.transformCor());
   }
 
+
+  // Animation that fades in the black background, does the transformation, and then fades out
   private IEnumerator transformCor()
   {
     float t = 0;

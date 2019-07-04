@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 
 // Bullet:
-// Reference: https://assetstore.unity.com/packages/tools/integration/uni-bullet-hell-19088
 [DisallowMultipleComponent]
 public class Bullet : PooledObject
 {
@@ -9,9 +8,9 @@ public class Bullet : PooledObject
   private BulletShooterBase parentBaseShot;
 
   // Speed at velocity
-  public float speed;
+  public float speed = 0f;
   // Angle at which going at
-  public float angle;
+  public float angle = 0f;
   // Acceleration
   private float accelSpeed;
   // Acceleration turning
@@ -64,18 +63,15 @@ public class Bullet : PooledObject
     this.DestroyBullet();
   }
 
-  /// <summary>
-  /// Activate/Inactivate Bullet
-  /// Override this method when you want to change the behavior at Active / Inactive.
-  /// </summary>
+
+  // Activate/Inactivate Bullet
+  // Override this method when you want to change the behavior at Active / Inactive.
   public virtual void SetActive(bool isActive)
   {
     gameObject.SetActive(isActive);
   }
 
-  /// <summary>
-  /// Finished Shot
-  /// </summary>
+  // Finished Shot
   public void OnFinishedShot()
   {
     if (isShooting == false)
@@ -90,9 +86,7 @@ public class Bullet : PooledObject
     bulletTransform.transform.position = Vector3.zero;
   }
 
-  /// <summary>
-  /// Bullet Shot
-  /// </summary>
+  // Bullet Shot
   public void Shot(BulletShooterBase parentBaseShot,
                    float speed, float angle, float accelSpeed, float accelTurn,
                    bool homing, Transform homingTarget, float homingAngleSpeed,
@@ -134,8 +128,6 @@ public class Bullet : PooledObject
     this.baseAngle = 0f;
     if (inheritAngle && this.parentBaseShot.lockOnShot == false)
     {
-
-      // X and Y axis
       this.baseAngle = this.parentBaseShot.transform.eulerAngles.z;
     }
 
@@ -150,9 +142,7 @@ public class Bullet : PooledObject
     this.UpdateMove(Time.deltaTime);
   }
 
-  /// <summary>
-  /// Update Move
-  /// </summary>
+  // Update Move
   public void UpdateMove(float deltaTime)
   {
     if (this.isShooting == false)
@@ -243,8 +233,6 @@ public class Bullet : PooledObject
 
 
   public void DestroyBullet() {
-    //this.baseAngle = 0f;
-    //this.bulletTransform.rotation = Quaternion.Euler(bulletTransform.rotation.x, bulletTransform.rotation.y, baseAngle + angle);
     this.isShooting = false;
     this.frameCount = 0f;
     this.timeCount = 0f;

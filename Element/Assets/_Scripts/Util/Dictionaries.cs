@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// Helper class to handle commonly instantiated objects.
 public class Dictionaries : Singleton<Dictionaries>
 {
-
   public List<PlayerAbilityBase> abilityPrefabs;
 
   public PlayerAbilityBase getRandAbilityPrefab()

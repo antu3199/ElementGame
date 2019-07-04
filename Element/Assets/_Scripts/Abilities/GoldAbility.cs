@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Create "armor" that blocks a few bullets
 public class GoldAbility : PlayerAbilityBase
 {
     public override PARTICLE_TYPES type { get { return PARTICLE_TYPES.GOLD; } }
@@ -19,12 +20,15 @@ public class GoldAbility : PlayerAbilityBase
 
     public override bool useableAbility { get { return true; } }
 
-    public int armor;
+    public int baseArmor = 3;
+
+    private int armor;
 
     public override void useAbility()
     {
+        // Activate "Armor", so that the player does not take damage.
         GameStateManager.Instance.game.player.playerCollision.hasArmor = true;
-        armor = 3;
+        armor = baseArmor;
         sprite.color = new Color32(218, 165, 32, 255);
     }
 
@@ -42,10 +46,8 @@ public class GoldAbility : PlayerAbilityBase
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        // Overrides player collision when there is armor.
         if (!GameStateManager.Instance.game.player.playerCollision.canCollide) return;
-
-        print(other.tag);
-
         if (other.tag == "EnemyBullet")
         {
             armor = System.Math.Max(0, armor - 1);

@@ -4,19 +4,16 @@ using UnityEngine;
 
 
 // Class that acts as a bridge for the model and other player scripts
-
-// Requires that this component be added
-[RequireComponent(typeof(PlayerCollision))
-//,(typeof(AnyOtherClass))
-]
 public class Player : MonoBehaviour, ExplicitInterface
 {
+  // Contains References to other player classes
   public PlayerCollision playerCollision;
   public PlayerMovement playerMovement;
   public PlayerAbilityController playerAbility;
 
   public bool canMove = true;
-
+  
+  // Particle system that plays when the player is destroyed.
   public ParticleSystem deathParticles;
 
   public void DoUpdate()
@@ -29,7 +26,8 @@ public class Player : MonoBehaviour, ExplicitInterface
       this.setCanMove(false);
     }
   }
-
+  
+  // Play the particle system when player is destroyed.
   public void setCanMove(bool move) {
     this.playerCollision.canCollide = move;
     this.playerMovement.SetCanMove(move);

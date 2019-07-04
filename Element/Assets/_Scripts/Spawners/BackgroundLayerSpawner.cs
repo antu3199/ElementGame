@@ -2,23 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Direction
-{
-    BASE = 0,
-    RIGHT = 1,
-    LEFT = 2,
-    TOP = 3,
-    BOTTOM = 4,
-    TOP_LEFT = 5,
-    TOP_RIGHT = 6,
-    BOTTOM_LEFT = 7,
-    BOTTOM_RIGHT = 8
-
-};
-
+// Class that handles creating an "infinitely scrolling background"
 public class BackgroundLayerSpawner : MonoBehaviour, ExplicitInterface
 {
-
+    // Parameters
     public float imageWidth = 1080;
     public float imageHeight = 1920;
     public float pixelsPerUnit = 100;
@@ -26,9 +13,11 @@ public class BackgroundLayerSpawner : MonoBehaviour, ExplicitInterface
     public float playerHorizontalLimit = 6;
     public float playerVerticalLimit = 6;
 
-
+    // References
     public Transform player;
     public List<Transform> layers;
+
+    // Lists and stuff.
     private List<Transform> curLayers = new List<Transform>();
     private List<Transform> layerPool = new List<Transform>();
 
@@ -38,7 +27,7 @@ public class BackgroundLayerSpawner : MonoBehaviour, ExplicitInterface
     private Vector3 curPos;
     private Vector3 curScale;
 
-    float CurLayerX1
+    private float CurLayerX1
     {
         get
         {
@@ -46,7 +35,7 @@ public class BackgroundLayerSpawner : MonoBehaviour, ExplicitInterface
         }
     }
 
-    float CurLayerX2
+    private float CurLayerX2
     {
         get
         {
@@ -54,7 +43,7 @@ public class BackgroundLayerSpawner : MonoBehaviour, ExplicitInterface
         }
     }
 
-    float CurLayerY1
+    private float CurLayerY1
     {
         get
         {
@@ -62,7 +51,7 @@ public class BackgroundLayerSpawner : MonoBehaviour, ExplicitInterface
         }
     }
 
-    float CurLayerY2
+    private float CurLayerY2
     {
         get
         {
@@ -96,7 +85,8 @@ public class BackgroundLayerSpawner : MonoBehaviour, ExplicitInterface
         }
         this.curLayers.Clear();
     }
-
+    
+    // Show or hide layers based on distance
     public void DoUpdate()
     {
         this.ReturnLayersToPool();
@@ -153,15 +143,17 @@ public class BackgroundLayerSpawner : MonoBehaviour, ExplicitInterface
 
         this.checkLimits();
     }
-
-    Transform GetLayerFromPool()
+    
+    // Gets a new layer from the pool
+    private Transform GetLayerFromPool()
     {
         Transform newLayer = layerPool[layerPool.Count - 1];
         layerPool.RemoveAt(layerPool.Count - 1);
         return newLayer;
     }
 
-    void showNewLayer(Vector3 scale)
+    // Show the layer
+    private void showNewLayer(Vector3 scale)
     {
         Transform newLayer = GetLayerFromPool();
 
@@ -173,8 +165,9 @@ public class BackgroundLayerSpawner : MonoBehaviour, ExplicitInterface
         newLayer.gameObject.SetActive(true);
         this.curLayers.Add(newLayer);
     }
-
-    void checkLimits()
+    
+    // Modifies the "current pivot" based off of player location.
+    private void checkLimits()
     {
         bool swapWithRight = this.player.transform.position.x > this.CurLayerX2;
         if (swapWithRight)

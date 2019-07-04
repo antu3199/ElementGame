@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Corn ability that shoots out corn that blocks bullets
 public class CornAbility : PlayerAbilityBase
 {
   public override PARTICLE_TYPES type { get { return PARTICLE_TYPES.CORNSTARCH; } }
@@ -19,7 +20,7 @@ public class CornAbility : PlayerAbilityBase
   public override bool useableAbility { get { return true; } }
   public override void useAbility()
   {
-    // DO something
+    // Shoot out a bunch of corn using the RotatingShot
     this.bulletShooter.Shot();
   }
 }

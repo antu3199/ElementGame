@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Class that handles player movement.
 public class PlayerMovement : MonoBehaviour
 {
   public float movementSpeed = 1.0f;
@@ -14,7 +15,6 @@ public class PlayerMovement : MonoBehaviour
   public float maxDistance = 2f;
   public float rotationSpeed = 1;
 
-  // Use this for initialization
   void Start()
   {
     this.line.gameObject.SetActive(false);
@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
   {
     if (Input.GetMouseButtonDown(0))
     {
+      // Creates a "pivot" based on the touch position.
       this.pivot = Input.mousePosition;
 
       Vector3 curPivot = this.getScreenPoint(this.pivot);
@@ -34,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     }
     else if (Input.GetMouseButton(0))
     {
+      // Moves pased on the delta of that position, clamping distance if ncessary
       this.cur = Input.mousePosition;
       Vector3 pivotPos = this.getScreenPoint(this.pivot);
       Vector3 curPos = this.getScreenPoint(this.cur);
@@ -50,15 +52,16 @@ public class PlayerMovement : MonoBehaviour
 
       this.transform.position += (curPos - pivotPos) * movementSpeed * Time.deltaTime;
 
-      // Handle rotation:
+      // Handle rotation of player sprite
       Vector2 direction = delta.normalized;
       float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 270;
       Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-      transform.rotation = rotation; //Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+      transform.rotation = rotation;
 
     }
     else if (Input.GetMouseButtonUp(0))
     {
+      // Don't show line if not pressing
       this.line.gameObject.SetActive(false);
     }
   }
@@ -70,6 +73,7 @@ public class PlayerMovement : MonoBehaviour
     return screenPos;
   }
 
+  // Disable everything if cannot move.
   public void SetCanMove(bool move) {
     if (move == false) {
       this.line.gameObject.SetActive(false);

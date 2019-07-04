@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnityEngine.Serialization;
 
-// Reference: https://assetstore.unity.com/packages/tools/integration/uni-bullet-hell-19088
 public class LinearShot : BulletShooterBase
 {
   [Header("===== LinearShot Settings =====")]

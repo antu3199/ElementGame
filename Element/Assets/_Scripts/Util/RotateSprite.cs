@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Simply rotates over time
 public class RotateSprite : MonoBehaviour {
 
   [SerializeField] private float rotationSpeed;

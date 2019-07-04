@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnityEngine.Serialization;
 
-// Reference: https://assetstore.unity.com/packages/tools/integration/uni-bullet-hell-19088
 public class RotatingShot : BulletShooterBase
 {
   [Header("===== RotatingShot Settings =====")]
@@ -11,7 +10,7 @@ public class RotatingShot : BulletShooterBase
   public float deltaAngle = 5;
   public float initialAngle = 12;
 
-  float prevAngle;
+  private float prevAngle;
 
 
   public override void Shot()

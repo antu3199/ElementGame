@@ -2,13 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// General enemy movement: Moves randomly around the player
 public class EnemyMovement : MonoBehaviour {
 
   [SerializeField] protected Transform player;
-  [SerializeField] protected float playerMovementRange;
-  [SerializeField] protected float randomMovementRange;
-  [SerializeField] protected float splineSpeed;
+  [SerializeField] protected float playerMovementRange = 7;
+  [SerializeField] protected float randomMovementRange = 10;
+  [SerializeField] protected float splineSpeed = 0.2f;
   [SerializeField] protected float correctedDistance = 3;
+
+  // Spline is used to generate a smooth path 
   protected BezierCurve currentPath;
 
   void Start() {
@@ -17,7 +21,9 @@ public class EnemyMovement : MonoBehaviour {
     this.getNextMoves(this.transform.position);
   } 
 
-  void getNextMoves(Vector3 initialPos) {
+  
+  // Get the next path, based on randomization
+  private void getNextMoves(Vector3 initialPos) {
     float playerX = this.player.position.x;
     float playerY = this.player.position.y;
     float movementX = Random.Range(playerX - playerMovementRange, playerY + playerMovementRange);
@@ -35,7 +41,8 @@ public class EnemyMovement : MonoBehaviour {
     this.StartCoroutine(this.slideAlongPath());
   }
 
-  Vector3 CorrectMovement(Vector3 og) {
+  // Correct movement to not allow it to be too close to the player
+  private Vector3 CorrectMovement(Vector3 og) {
 
     if (Vector3.Distance(og, this.player.position) <= 3) {
       int rngX = Random.Range(0, 2);
@@ -47,6 +54,7 @@ public class EnemyMovement : MonoBehaviour {
     return og;
   }
 	
+  // Move the player along the path
 	private IEnumerator slideAlongPath() {
 
     float t = 0;

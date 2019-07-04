@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Simple controller that helps change the GameStateManager's state.
 public class GameStateChanger : MonoBehaviour
 {
   public GAME_STATE stateTo;
-  // Use this for initialization
   void Start()
   {
     GameStateManager.Instance.changeState(stateTo);
