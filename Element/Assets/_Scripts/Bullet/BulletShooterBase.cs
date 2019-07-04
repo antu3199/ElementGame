@@ -4,7 +4,6 @@ using UnityEngine.Events;
 using UnityEngine.Serialization;
 
 // Bullet shooter base
-// Reference: https://assetstore.unity.com/packages/tools/integration/uni-bullet-hell-19088
 public abstract class BulletShooterBase : MonoBehaviour
 {
   [Header("=== Bullet Base Settings ===")]

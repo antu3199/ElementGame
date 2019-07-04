@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 // Reference: https://catlikecoding.com/unity/tutorials/curves-and-splines/
+// For interpolating smooth paths based off of 3 or 4 points.
 public class BezierCurve {
   public Transform relativeTransform;
 	public Vector3[] points = new Vector3[4];

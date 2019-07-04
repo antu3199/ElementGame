@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Create "armor" that blocks a few bullets
 public class GoldAbility : PlayerAbilityBase
 {
     public override PARTICLE_TYPES type { get { return PARTICLE_TYPES.GOLD; } }
@@ -19,22 +20,25 @@ public class GoldAbility : PlayerAbilityBase
 
     public override bool useableAbility { get { return true; } }
 
-    public int armor;
+    public int baseArmor = 3;
+
+    private int armor;
 
     public override void useAbility()
     {
-        GameStateManager.Instance.player.playerCollision.hasArmor = true;
-        armor = 3;
+        // Activate "Armor", so that the player does not take damage.
+        GameStateManager.Instance.game.player.playerCollision.hasArmor = true;
+        armor = baseArmor;
         sprite.color = new Color32(218, 165, 32, 255);
     }
 
     void OnDestroy()
     {
-        if (!GameStateManager.Instance || !GameStateManager.Instance.player || !GameStateManager.Instance.player.playerCollision) return;
+        if (!GameStateManager.Instance || !GameStateManager.Instance.game.player || !GameStateManager.Instance.game.player.playerCollision) return;
 
-        if (GameStateManager.Instance.player.playerCollision.hasArmor)
+        if (GameStateManager.Instance.game.player.playerCollision.hasArmor)
         {
-            GameStateManager.Instance.player.playerCollision.hasArmor = false;
+            GameStateManager.Instance.game.player.playerCollision.hasArmor = false;
         }
 
         sprite.color = new Color32(255, 215, 0, 255);
@@ -42,16 +46,14 @@ public class GoldAbility : PlayerAbilityBase
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (!GameStateManager.Instance.player.playerCollision.canCollide) return;
-
-        print(other.tag);
-
+        // Overrides player collision when there is armor.
+        if (!GameStateManager.Instance.game.player.playerCollision.canCollide) return;
         if (other.tag == "EnemyBullet")
         {
             armor = System.Math.Max(0, armor - 1);
             if (armor == 0)
             {
-                GameStateManager.Instance.player.playerCollision.hasArmor = false;
+                GameStateManager.Instance.game.player.playerCollision.hasArmor = false;
                 sprite.color = new Color32(255, 215, 0, 255);
             }
         }

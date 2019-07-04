@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Increase score over time.
 public class NickelAbility : PlayerAbilityBase {
     public override PARTICLE_TYPES type { get { return PARTICLE_TYPES.NICKEL; }  }
 	public override string commonName { get { return "Nickel"; }  }
@@ -14,14 +15,13 @@ public class NickelAbility : PlayerAbilityBase {
   
   float curTime = 0;
   // Update is called once per frame
-  public void Update () {
+  public new void Update () {
     base.Update();
+    // Increase score over time
     curTime += Time.deltaTime;
     if (curTime >= 1) {
-      GameStateManager.Instance.score+= 5;
+      GameStateManager.Instance.game.score+= 5;
       curTime = 0;
     }
-    
-    
   }
 }

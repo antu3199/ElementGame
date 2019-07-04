@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
  
+
+ // Override sorting layer, because TextMesh doesn't have it.
  [ExecuteInEditMode]
  public class SortingLayerOverrider : MonoBehaviour {
  
