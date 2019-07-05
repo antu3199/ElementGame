@@ -76,6 +76,7 @@ public class AndroidUtils : MonoBehaviour
   {
 #if UNITY_ANDROID && !UNITY_EDITOR
     if (androidRecorder != null) {
+      this.isRecording = false;
       androidRecorder.Call("cleanUpRecorder");
     }
 #endif
@@ -109,11 +110,25 @@ public class AndroidUtils : MonoBehaviour
 #if UNITY_ANDROID && !UNITY_EDITOR
 	androidRecorder.Call("startRecording");
 #endif
+#if UNITY_EDITOR
+  this.isRecording = true;
+  if (this.updateStateCallback != null)
+  {
+    this.updateStateCallback();
+  }
+#endif
   }
   public void StopRecording()
   {
 #if UNITY_ANDROID && !UNITY_EDITOR
 	androidRecorder.Call("stopRecording");
+#endif
+#if UNITY_EDITOR
+  this.isRecording = false;
+  if (this.updateStateCallback != null)
+  {
+    this.updateStateCallback();
+  }
 #endif
   }
   //this function will be call when record status change

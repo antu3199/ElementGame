@@ -12,11 +12,6 @@ public class RecordingController : MonoBehaviour
         this.UpdateButtonState();
     }
 
-    private void OnDestroy()
-    {
-      GameStateManager.Instance.recorder.updateStateCallback = null;
-    }
-
     private void UpdateButtonState() {
       canPress = true;
       this.startRecordbtn.SetActive(!GameStateManager.Instance.recorder.isRecording);
