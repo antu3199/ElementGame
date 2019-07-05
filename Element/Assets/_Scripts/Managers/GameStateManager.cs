@@ -17,6 +17,7 @@ public class GameStateManager : Singleton<GameStateManager>
   // Specifies the current game state:
   public GAME_STATE gameState { get; private set; }
   public GameController game {get; set;}
+  public AndroidUtils recorder;
 
   void Update() {
     switch (this.gameState) {
