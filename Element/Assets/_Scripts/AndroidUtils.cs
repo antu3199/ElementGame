@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+// Source: https://github.com/thanh-nguyen-kim/Unity_Android_Screen_Recorder
 // Protection level: dangerous permissions 2015/11/25
 // http://developer.android.com/intl/ja/reference/android/Manifest.permission.html
 public enum AndroidPermission
