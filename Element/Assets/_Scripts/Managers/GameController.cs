@@ -30,14 +30,24 @@ public class GameController : MonoBehaviour, ExplicitInterface
   void Awake()
   {
     GameStateManager.Instance.game = this;
-    observers.Add(this.player);
-    observers.Add(this.ui);
-    observers.Add(cameraMover);
-    observers.Add(backgroundHandler);
-    observers.Add(particleSpawner);
+	addObserver(this.player);
+	addObserver(this.ui);
+	addObserver(cameraMover);
+	addObserver(backgroundHandler);
+	addObserver(particleSpawner);
   }
 
-  public void DoUpdate()
+	public void addObserver(ExplicitInterface observer)
+	{
+		this.observers.Add(observer);
+	}
+
+	public void removeObserver(ExplicitInterface observer)
+	{
+		this.observers.Remove(observer);
+	}
+
+	public void DoUpdate()
   {
     this.score += this.scoreIncreaseSpeed * Time.deltaTime;
     this.ui.setScoreText(this.score);
