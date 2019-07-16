@@ -10,6 +10,7 @@ public enum PARTICLE_TYPES
   GOLD = 3,
   NICKEL = 4,
   ALCOHOL = 5,
+  ACETONE = 6,
 }
 
 
