@@ -54,7 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224352660560746944}
   m_Layer: 5
-  m_Name: GoldCooldownSprite
+  m_Name: AcetoneSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

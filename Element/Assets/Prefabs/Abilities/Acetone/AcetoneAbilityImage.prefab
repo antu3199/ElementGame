@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 224145167807255918}
   - component: {fileID: 222316371965621672}
   m_Layer: 5
-  m_Name: GoldAbilityImage
+  m_Name: AcetoneAbilityImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
