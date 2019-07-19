@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 58501453587342754}
   - component: {fileID: 114394992791353308}
   - component: {fileID: 50126978575439076}
+  - component: {fileID: 114542849323204798}
   m_Layer: 0
   m_Name: BulletSprite&Collision
   m_TagString: EnemyBullet
@@ -66,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1093533350906592}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.47, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4330314082584088}
@@ -121,6 +122,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxObjects: 0
   bulletTransform: {fileID: 4645749020816944}
+  speed: 0
+  angle: 0
 --- !u!114 &114394992791353308
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -133,6 +136,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 200
+--- !u!114 &114542849323204798
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1533686894432366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6089b32089224a45a43416a434693b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRend: {fileID: 212913212419206690}
 --- !u!212 &212913212419206690
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -168,8 +183,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6ded774fe14bc9a4cb5648aea23cf05c, type: 3}
-  m_Color: {r: 0.2588668, g: 0.2638259, b: 0.97794116, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 5552089669c4e094c8e8ccbd10391b93, type: 3}
+  m_Color: {r: 0.7407449, g: 1, b: 0.68235296, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

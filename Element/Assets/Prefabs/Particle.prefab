@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212903729424236930}
   - component: {fileID: 58913632209112904}
   - component: {fileID: 114569173145078180}
+  - component: {fileID: 114360652120147866}
   m_Layer: 0
   m_Name: Particle
   m_TagString: Particle
@@ -57,6 +58,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.67
+--- !u!114 &114360652120147866
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1571430877481710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6089b32089224a45a43416a434693b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRend: {fileID: 212903729424236930}
+  multiplyInstead: 0
 --- !u!114 &114569173145078180
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -104,8 +118,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c6c4efb73c3eccd409480d5aa6235e1e, type: 3}
-  m_Color: {r: 0, g: 0.9433962, b: 0.12151813, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 7a197bd509b8f234aae3df662dcb6530, type: 3}
+  m_Color: {r: 0.9314782, g: 0.68235296, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

@@ -38,6 +38,7 @@ public class ParticleTransformer : MonoBehaviour
     this.commonNameText.text = info.commonName;
     this.formulaText.text = info.chemicalName;
     this.descriptionText.text = info.description;
+    GameStateManager.Instance.game.backgroundHandler.ChangeColor(true);
     
     // Animation effect
     StartCoroutine(this.transformCor());
