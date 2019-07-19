@@ -15,7 +15,11 @@ public class BackgroundLayerSpawner : MonoBehaviour, ExplicitInterface
 
     // References
     public Transform player;
-    public List<Transform> layers;
+    public List<SpriteRenderer> layers;
+    public List<Color> colours;
+    public float colorChangeTime = 5.0f;
+    public Color curColor{get; set;}
+    private bool isAnimatingColour = false;
 
     // Lists and stuff.
     private List<Transform> curLayers = new List<Transform>();
@@ -69,8 +73,9 @@ public class BackgroundLayerSpawner : MonoBehaviour, ExplicitInterface
 
         for (int i = 0; i < this.layers.Count; i++)
         {
-            this.layerPool.Add(this.layers[i]);
+            this.layerPool.Add(this.layers[i].transform);
         }
+        this.ChangeColor(false);
     }
 
     void ReturnLayersToPool()
@@ -80,10 +85,46 @@ public class BackgroundLayerSpawner : MonoBehaviour, ExplicitInterface
             if (this.curLayers[i] != null)
             {
                 this.curLayers[i].gameObject.SetActive(false);
-                this.layerPool.Add(this.curLayers[i]);
+                this.layerPool.Add(this.curLayers[i].transform);
             }
         }
         this.curLayers.Clear();
+    }
+
+    public void ChangeColor(bool anim = false) {
+      Color randomColor = this.colours[Random.Range(0, this.colours.Count)];
+
+      if (anim == false) {
+        foreach (SpriteRenderer layer in layers) {
+          layer.color = randomColor;
+        }
+        this.curColor = randomColor;
+        return;
+      }
+
+      if (this.isAnimatingColour == true) {
+        return;
+      }
+
+      StartCoroutine(changeColorAnimation(curColor, randomColor));
+    }
+
+    private IEnumerator changeColorAnimation(Color colorFrom, Color colorTo) {
+      float curTime = 0;
+      this.isAnimatingColour = true;
+      while (curTime < this.colorChangeTime) {
+        float t = (float)curTime / (float)this.colorChangeTime;
+        Color newColour = Color.Lerp(colorFrom, colorTo, t);
+        this.curColor = newColour;
+        
+        foreach (SpriteRenderer layer in layers) {
+          layer.color = newColour;
+        }
+        curTime += Time.deltaTime;
+        yield return null;
+      }
+
+      this.isAnimatingColour = false;
     }
     
     // Show or hide layers based on distance

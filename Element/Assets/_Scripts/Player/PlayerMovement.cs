@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
   public float maxDistance = 2f;
   public float rotationSpeed = 1;
 
+  private Vector3 prevPos;
+
   void Start()
   {
     this.line.gameObject.SetActive(false);
@@ -36,7 +38,8 @@ public class PlayerMovement : MonoBehaviour
     else if (Input.GetMouseButton(0))
     {
       // Moves pased on the delta of that position, clamping distance if ncessary
-      this.cur = Input.mousePosition;
+      this.cur = Input.touchCount < 2 ? Input.mousePosition : prevPos;
+
       Vector3 pivotPos = this.getScreenPoint(this.pivot);
       Vector3 curPos = this.getScreenPoint(this.cur);
       Vector3 delta = (curPos - pivotPos);
@@ -57,7 +60,10 @@ public class PlayerMovement : MonoBehaviour
       float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + 270;
       Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
       transform.rotation = rotation;
-
+      
+      if (Input.touchCount < 2) {
+        prevPos = Input.mousePosition;
+      }
     }
     else if (Input.GetMouseButtonUp(0))
     {
