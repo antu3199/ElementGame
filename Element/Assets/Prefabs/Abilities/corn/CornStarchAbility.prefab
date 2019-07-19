@@ -2642,6 +2642,7 @@ MonoBehaviour:
   numBullets: 16
   deltaAngle: 22.5
   initialAngle: 0
+  delay: 0
 --- !u!114 &114549681299394756
 MonoBehaviour:
   m_ObjectHideFlags: 1
