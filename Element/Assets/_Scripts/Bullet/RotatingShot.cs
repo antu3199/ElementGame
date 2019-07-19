@@ -9,6 +9,7 @@ public class RotatingShot : BulletShooterBase
   public int numBullets = 60;
   public float deltaAngle = 5;
   public float initialAngle = 12;
+	public float delay = 0;
 
   private float prevAngle;
 
@@ -41,7 +42,11 @@ public class RotatingShot : BulletShooterBase
         }
         ShotBullet(bullet, this.bulletSpeed/2, prevAngle);
         this.prevAngle += this.deltaAngle;
-    }
+		if (delay != 0)
+		{
+			yield return new WaitForSeconds(this.delay);
+		}
+	}
     FiredShot();
     FinishedShot();
     this.prevAngle += this.initialAngle;
