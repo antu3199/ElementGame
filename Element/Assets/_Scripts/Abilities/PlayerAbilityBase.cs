@@ -11,6 +11,7 @@ public enum PARTICLE_TYPES
   NICKEL = 4,
   ALCOHOL = 5,
   ACETONE = 6,
+  ALUMINUM = 7,
 }
 
 

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 224145167807255918}
   - component: {fileID: 222316371965621672}
   m_Layer: 5
-  m_Name: AcetoneAbilityImage
+  m_Name: AluminiumAbilityImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.3803922, b: 0.43036258, a: 1}
+  m_Color: {r: 1, g: 0.8517299, b: 0.3820755, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

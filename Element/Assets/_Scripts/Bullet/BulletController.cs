@@ -47,7 +47,6 @@ public sealed class BulletController : MonoBehaviour
     StartCoroutine(ShotCoroutine());
   }
 
-
   // Starts a shot coroutine, which periodically shoots the pattern
   private IEnumerator ShotCoroutine()
   {

@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 102919224735692214}
   - component: {fileID: 114294865838786320}
   m_Layer: 0
-  m_Name: AcetoneText
+  m_Name: GoldText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,7 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4979349370070054}
   m_Layer: 0
-  m_Name: AcetoneSprite
+  m_Name: GoldSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,9 +71,8 @@ GameObject:
   - component: {fileID: 114296051220559794}
   - component: {fileID: 58057341861585132}
   - component: {fileID: 50780487375445446}
-  - component: {fileID: 114732475182656878}
   m_Layer: 0
-  m_Name: AcetoneAbility
+  m_Name: AluminiumAbility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -244,7 +243,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1839603708329910}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90fc00bc7dd1934408aa2bb80d782d61, type: 3}
   m_Name: 
@@ -258,24 +257,6 @@ MonoBehaviour:
   abilityAvailable: 1
   sprite: {fileID: 212762649287140622}
   baseArmor: 3
---- !u!114 &114732475182656878
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1839603708329910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 353de9019f3ca93488fb5a7d6f045906, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityCooldownDuration: 0
-  visuals: {fileID: 0}
-  canvasVisualsPrefab: {fileID: 1224056857517892, guid: 5d2dd910806fd4648b3bc2243daa75ef,
-    type: 2}
-  cooldownVisualsPrefab: {fileID: 1643300779500020, guid: ec26520a0ef29e24d9b45f2dad325175,
-    type: 2}
-  abilityAvailable: 1
 --- !u!212 &212762649287140622
 SpriteRenderer:
   m_ObjectHideFlags: 1
